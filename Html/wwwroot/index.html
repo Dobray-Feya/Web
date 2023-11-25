@@ -5,27 +5,27 @@
     <title>Давай знакомиться!</title>
 </head>
 <body>
-    <p>
+    <div>
         Готов окунуться в мир опасных приключений? Тогда давай знакомиться!
-    </p>
+    </div>
     <form action="/SendPersonData" method="post">
-        <p>
+        <div>
             <label>
                 Твое имя?
                 <br />
 
                 <input type="text" name="name" placeholder="Печатай тут. Не бойся!" />
             </label>
-        </p>
-        <p>
+        </div>
+        <div>
             <label>
                 Напиши о себе
                 <br />
 
                 <textarea name="hobby" placeholder="Откуда ты? Что любишь? Пиши не стесняйся!" rows="6"></textarea>
             </label>
-        </p>
-        <p>
+        </div>
+        <div>
             <label>
                 Ты веришь в приметы?
                 <br />
@@ -37,8 +37,8 @@
                     <option value="seldom">Верю, когда они сбываются</option>
                 </select>
             </label>
-        </p>
-        <p>
+        </div>
+        <div>
             Как считаешь, кто из них сильнее?
             <br />
             <label> <input type="radio" value="granny-yaga" name="most-terrible-monster"> Баба Яга </label>
@@ -46,8 +46,8 @@
             <label> <input type="radio" value="skeleton" name="most-terrible-monster"> Кощей </label>
             <br />
             <label> <input type="radio" value="viy" name="most-terrible-monster"> Вий </label>
-        </p>
-        <p>
+        </div>
+        <div>
             <label>
                 Что возьмешь в бой с чудищами?
                 <br />
@@ -62,8 +62,8 @@
                     <option value="brain">Хитрость и смекалку</option>
                 </select>
             </label>
-        </p>
-        <p>
+        </div>
+        <div>
             Выбери, что еще может пригодиться:
             <br />
             <label> <input type="checkbox" value="invisible-hat" name="invisible-hat"> Шапка-невидимка </label>
@@ -71,21 +71,21 @@
             <label> <input type="checkbox" value="fast-boots" name="fast-boots"> Сапоги-скороходы </label>
             <br />
             <label> <input type="checkbox" value="self-setting-table-cloth" name="self-setting-table-cloth"> Скатерть-самобранка </label>
-        </p>
-        <p>
+        </div>
+        <div>
             Итак, осталось совсем немного...
             Но прежде тебе нужно прочесть эту <a href="aboutMonsters.html">памятку о чудовищах</a>.
-        </p>
-        <p>
+        </div>
+        <div>
             <label>
                 <input type="checkbox" value="agree" name="agree"> Я не боюсь чудовищ!
             </label>
-        </p>
-        <p>
+        </div>
+        <div>
             <label>
                 <button type="submit" value="submit" name="submit">Вперёд к приключениям!</button>
             </label>
-        </p>
+        </div>
     </form>
 </body>
 </html>
