@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>CSS Form</title>
+    <link href="normalize.css" rel="stylesheet" media="screen" />
+    <link href="styles.css" rel="stylesheet" media="screen" />
+</head>
+<body>
+    <div class="container">
+        <form class="form" action="/SendPersonData" method="post">
+            <h1>Отправить заявку</h1>
+            <h2>Ваше имя</h2>
+            <input type="text" name="name" placeholder="Ваше имя *" required />
+
+            <h2>Ваш номер телефона</h2>
+            <input type="text" name="phone" placeholder="Ваш номер телефона *" required />
+
+            <h2>Ваш email или VK</h2>
+            <input type="text" name="email-or-vk" placeholder="Ваш email или VK *" required />
+
+            <h2>Комментарий</h2>
+            <textarea name="comment" placeholder="Комментарий (не обязательно)" rows="6"></textarea>
+
+            <div>Заполните и отправьте форму, и мы  перезвоним Вам по указанному номеру</div>
+
+            <button type="submit" class="button">Отправить заявку</button>
+        </form>
+    </div>
+</body>
+</html>

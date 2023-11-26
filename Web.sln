@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33723.286
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Html", "Html\Html.csproj", "{166B4138-D19D-4424-8B43-5146378CA6F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Html", "Html\Html.csproj", "{166B4138-D19D-4424-8B43-5146378CA6F4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CssText", "CssText\CssText.csproj", "{88DF62F1-200D-4571-957B-AA5039B0F37F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CssTable", "CssTable\CssTable.csproj", "{4A4C0943-E0B2-4A17-B4E5-3B970DF30EE8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CssForm", "CssForm\CssForm.csproj", "{0321EF87-67AB-4C62-A49B-A577D476C4AA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{166B4138-D19D-4424-8B43-5146378CA6F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{166B4138-D19D-4424-8B43-5146378CA6F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{166B4138-D19D-4424-8B43-5146378CA6F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88DF62F1-200D-4571-957B-AA5039B0F37F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88DF62F1-200D-4571-957B-AA5039B0F37F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88DF62F1-200D-4571-957B-AA5039B0F37F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88DF62F1-200D-4571-957B-AA5039B0F37F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A4C0943-E0B2-4A17-B4E5-3B970DF30EE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A4C0943-E0B2-4A17-B4E5-3B970DF30EE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A4C0943-E0B2-4A17-B4E5-3B970DF30EE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A4C0943-E0B2-4A17-B4E5-3B970DF30EE8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0321EF87-67AB-4C62-A49B-A577D476C4AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0321EF87-67AB-4C62-A49B-A577D476C4AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0321EF87-67AB-4C62-A49B-A577D476C4AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0321EF87-67AB-4C62-A49B-A577D476C4AA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
