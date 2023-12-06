@@ -1,9 +1,10 @@
 ﻿// Подзадача 1
 
 (function () {
+    "use strict"
     console.log("Подзадача 1");
 
-    array = [8, -9, 3, 3.1, 3.2, -3, 12, 4, 6];
+    let array = [8, -9, 3, 3.1, 3.2, -3, 12, 4, 6];
     printArray(array, "Исходный массив");
 
     sortDescending(array);
@@ -38,6 +39,7 @@
 // Подзадача 2
 
 (function () {
+    "use strict"
     console.log("Подзадача 2");
 
     const array = createNumbersArray(100);
@@ -48,7 +50,7 @@
     function createNumbersArray(count) {
         let array = [];
 
-        for (var i = 1; i <= count; i++) {
+        for (let i = 1; i <= count; i++) {
             array.push(i);
         }
 

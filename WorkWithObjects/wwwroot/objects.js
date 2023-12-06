@@ -1,4 +1,4 @@
-﻿(function() {
+﻿(function () {
     const russia = {
         "name": "Россия",
         cities: [
@@ -65,7 +65,7 @@
 
     console.log(`Численность населения по странам (млн человек):`);
 
-    for (countryName in countryPopulations) {
+    for (let countryName in countryPopulations) {
         console.log(`${countryName} - ${countryPopulations[countryName]}`);
     }
 })()
