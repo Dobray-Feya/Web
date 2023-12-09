@@ -4,7 +4,7 @@
 
 body {
 	/*background-image: url("CSS_Text.jpg"); /*test*/
-	/*opacity: 0.5; /*test*/
+	/*pacity: 0.5; /*test*/
 }
 
 .container {
@@ -13,7 +13,7 @@ body {
 
 .text {
 	width: 100%;
-	font-family: Arial;
+	font-family: Arial, Noto Sans, sans-serif;
 	font-weight: normal;
 	color: #746353;
 	background-color: #FEEED5;
@@ -25,6 +25,7 @@ body {
 	font-size: 27px;
 	text-transform: uppercase;
 	font-weight: normal;
+	letter-spacing: 1px;
 	margin: 0 0 14px;
 }
 

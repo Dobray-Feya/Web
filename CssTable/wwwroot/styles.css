@@ -13,16 +13,15 @@ body {
 
 .table table {
 	width: 100%;
-	
 	border-collapse: collapse;
 	text-align: left;
-	font-family: Calibri;
+	font-family: Calibri, Arial, Noto Sans, sans-serif;
 	font-size: 24px;
 }
 
 .table th {
 	font-weight: normal;
-	color: #D7FFFF;
+	color: #FFF;
 	background-color: #3598DB;
 	border: 1px solid #AFD7F0;
 	padding: 11px 0 11px 10px;
@@ -30,25 +29,25 @@ body {
 
 .table td {
 	border: 1px solid #CECECE;
-	padding: 12px 0 12px 10px;
+	padding: 12px 12px 10px;
 }
 
 .table tr:nth-child(odd) {
-	background-color: #EEEEEE;
+	background-color: #EEE;
 }
 
 .table tr:nth-child(even) {
-	background-color: #FFFFFF;
+	background-color: #FFF;
 }
 
-.table td:nth-child(1) {
+.table td.firstColumn {
 	width: 20.5%;
 }
 
-.table td:nth-child(2) {
+.table td.secondColumn {
 	width: 20.2%;
 }
 
-.table td:nth-child(3) {
+.table td.thirdColumn {
 	width: 36%;
 }

@@ -2,71 +2,72 @@
 	box-sizing: border-box;
 }
 
-body {	
+body {
 	/*background-image: url("CSS_Form.jpg"); /*test*/
-	/*opacity: 0.5; /*test*/
+	/*opacity: 0.6; /*test*/
 }
 
 .container {
 	max-width: 741px;
 }
 
-form.form {
+.form {
 	width: 100%;
 	color: #6C655B;
-	background-color: #FEEED5;
-	padding: 12px 21px;
-	font-family: Arial;
+	font-family: Arial, Noto Sans, sans-serif;
 	font-size: 14px;
 	text-align: left;
 }
 
-form.form h1 {
+.form-contain {
+	background-color: #FEEED5;
+	padding: 2px 21px 9px;
+}
+
+.form-header {
 	font-size: 28px;
 	font-weight: normal;
-	background-color: #FFFFFF;
-	padding: 30px 21px 5px;
-	margin: -21px -21px 0;
+	letter-spacing: 1px;
+	background-color: #FFF;
+	padding: 21px 21px 5px;
 }
 
-form.form h2 {
+.form-contain .field-name {
 	font-size: 14px;
 	font-weight: bold;
-	margin-top: 17px;
-	margin-bottom: 7px;
-	padding: 0;
+	display: block;
+	margin: 15px 0 8px;
 }
 
-form.form textarea, input {
+.form-contain textarea,
+input[type="text"] {
 	width: 100%;
 	border: none;
-	padding-left: 12px;
+	padding: 9px 12px;
 }
 
-form.form input {
-	padding-top: 9px;
-	padding-bottom: 9px;
+.form-contain textarea {
+	height: 110px;
+	resize: vertical;
+	min-height: 110px;
 }
 
-form.form textarea {
-	padding-top: 8px;
-	padding-bottom: 0px;
-	height:110px;
+.form-contain .info {
+	margin: 14px 0;
 }
 
-form.form div {
-	margin-top: 15px;
-	margin-bottom: 12px;
-}
-
-form.form .button {
-	color: #FFFFFF;
+.form-contain .button {
+	color: #FFF;
 	font-weight: bold;
 	background-color: #388DB2;
 	border: none;
 	padding: 8px 12px;
 	cursor: pointer;
 	display: block;
-	margin-right: 0px;
+	margin-right: 0;
 	margin-left: auto;
+}
+
+.form-contain .button:hover {
+	background-color: #257A90;
 }
