@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WorkWithObjects", "WorkWith
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoList", "ToDoList\ToDoList.csproj", "{982E4AAC-09D1-4C7D-90D6-4ECB590893AB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemperatureConversion", "TemperatureConversion\TemperatureConversion.csproj", "{87A2B944-137B-445A-B5D8-071DE3A01DC9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{982E4AAC-09D1-4C7D-90D6-4ECB590893AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{982E4AAC-09D1-4C7D-90D6-4ECB590893AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{982E4AAC-09D1-4C7D-90D6-4ECB590893AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87A2B944-137B-445A-B5D8-071DE3A01DC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87A2B944-137B-445A-B5D8-071DE3A01DC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87A2B944-137B-445A-B5D8-071DE3A01DC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87A2B944-137B-445A-B5D8-071DE3A01DC9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
