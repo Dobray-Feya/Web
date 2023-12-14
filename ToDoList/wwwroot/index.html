@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Список дел</title>
+    <link href="normalize.css" rel="stylesheet" />
+    <link href="styles.css" rel="stylesheet" />
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <form class="todo-form" id="todo-form">
+        <h1>Список дел</h1>
+        
+        <div>
+            <input type="text" id="add-new-task-field" />
+
+            <div class="error-message" >Не введен текст</div>
+        </div>
+
+        <div>
+            <button type="submit" class="add-task-button" id="add-task-button">Добавить</button>
+        </div>
+
+        <ul class="todo-list" id="todo-list"></ul>
+    </form>
+</body>
+</html>

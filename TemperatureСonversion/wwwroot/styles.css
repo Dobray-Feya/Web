@@ -1,0 +1,62 @@
+﻿* {
+	box-sizing: border-box;
+}
+
+.container {
+	max-width: 550px;
+}
+
+.temperaturePanel {
+	width: 100%;
+}
+
+.temperaturePanel .temperatureBar,
+.button {
+	font-family: Verdana, Arial, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	color: #333;
+}
+
+.temperaturePanel .temperatureBar {
+	width: 200px;
+	height: 100px;
+	padding: 16px;
+	display:inline-block;
+	vertical-align:top;
+	line-height: 28px;
+}
+
+.temperaturePanel input[type="text"]{
+	font-weight: normal;
+	width: 145px;
+	border: 1px solid #808080;
+	padding: 5px;
+	text-align: right;
+}
+
+.temperaturePanel .button {
+	width: 145px;
+	padding: 5px;
+	background-color: #75c3f7;
+	border: 1px solid #808080;
+}
+
+.temperaturePanel .button:hover {
+	background-color: #4db4f8;
+}
+
+.temperaturePanel input[type="text"].invalid {
+	border: 1px solid #f00;
+}
+
+.temperaturePanel .error-message{
+	font-size: 12px;
+	font-weight: normal;
+	display: none;
+	color: #f00;
+}
+
+.temperaturePanel .invalid + .error-message{
+	display: block;
+}
