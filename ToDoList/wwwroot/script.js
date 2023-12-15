@@ -1,4 +1,5 @@
 ﻿"use strict";
+
 document.addEventListener("DOMContentLoaded", function () {
     const todoForm = document.getElementById("todo-form");
     const addNewTaskField = document.getElementById("add-new-task-field");
@@ -19,12 +20,6 @@ document.addEventListener("DOMContentLoaded", function () {
         const listItem = document.createElement("li");
 
         let listItemValue = newValue;
-
-        setViewMode();
-
-        todolist.append(listItem);
-
-        addNewTaskField.value = "";
 
         function setViewMode() {
             listItem.innerHTML = `<span class="list-item-value" >${listItemValue}</span>
@@ -68,5 +63,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 })
             })
         }
+
+        setViewMode();
+
+        todolist.append(listItem);
+
+        addNewTaskField.value = "";
     })
 })
