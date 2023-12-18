@@ -4,16 +4,13 @@
 
 body {
 	/*background-image: url("CSS_Text.jpg"); /*test*/
-	/*pacity: 0.5; /*test*/
+	/*opacity: 0.5; /*test*/
+	
 }
 
 .container {
 	max-width: 750px;
-}
-
-.text {
-	width: 100%;
-	font-family: Arial, Noto Sans, sans-serif;
+	font-family: Arial, "Noto Sans", sans-serif;
 	font-weight: normal;
 	color: #746353;
 	background-color: #FEEED5;
@@ -21,7 +18,7 @@ body {
 	margin: 0;
 }
 
-.text .header {
+.header {
 	font-size: 27px;
 	text-transform: uppercase;
 	font-weight: normal;
@@ -29,12 +26,12 @@ body {
 	margin: 0 0 14px;
 }
 
-.text .annotation-text p {
+.annotation-text p {
 	font-size: 17px;
 	margin: 9px 0 0;
 }
 
-.text .basic-text p {
+.basic-text p {
 	font-size: 15px;
 	line-height: 22px;	
 	text-align: justify;
@@ -42,11 +39,11 @@ body {
 	margin: 9px 0 9px;
 }
 
-.text .highlighted {
+.highlighted {
 	color: #478B9E;
 	font-weight: bold;
 }
 
-.text .crossed-out {
+.crossed-out {
 	text-decoration: line-through;
 }

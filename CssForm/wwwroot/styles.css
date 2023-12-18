@@ -14,14 +14,14 @@ body {
 .form {
 	width: 100%;
 	color: #6C655B;
-	font-family: Arial, Noto Sans, sans-serif;
+	font-family: Arial, "Noto Sans", sans-serif;
 	font-size: 14px;
 	text-align: left;
 }
 
-.form-contain {
+.form-content {
 	background-color: #FEEED5;
-	padding: 2px 21px 9px;
+	padding: 2px 21px 13px;
 }
 
 .form-header {
@@ -32,31 +32,31 @@ body {
 	padding: 21px 21px 5px;
 }
 
-.form-contain .field-name {
+.form-content .field-name {
 	font-size: 14px;
 	font-weight: bold;
 	display: block;
 	margin: 15px 0 8px;
 }
 
-.form-contain textarea,
-input[type="text"] {
+.form-content textarea,
+.form-content input[type="text"] {
 	width: 100%;
 	border: none;
 	padding: 9px 12px;
 }
 
-.form-contain textarea {
+.form-content textarea {
 	height: 110px;
 	resize: vertical;
 	min-height: 110px;
 }
 
-.form-contain .info {
+.form-content .info {
 	margin: 14px 0;
 }
 
-.form-contain .button {
+.form-content .button {
 	color: #FFF;
 	font-weight: bold;
 	background-color: #388DB2;
@@ -68,6 +68,6 @@ input[type="text"] {
 	margin-left: auto;
 }
 
-.form-contain .button:hover {
+.form-content .button:hover {
 	background-color: #257A90;
 }

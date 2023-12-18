@@ -15,7 +15,7 @@ body {
 	width: 100%;
 	border-collapse: collapse;
 	text-align: left;
-	font-family: Calibri, Arial, Noto Sans, sans-serif;
+	font-family: Calibri, Arial, "Noto Sans", sans-serif;
 	font-size: 24px;
 }
 
@@ -40,14 +40,14 @@ body {
 	background-color: #FFF;
 }
 
-.table td.firstColumn {
+.table .first-name {
 	width: 20.5%;
 }
 
-.table td.secondColumn {
+.table .last-name {
 	width: 20.2%;
 }
 
-.table td.thirdColumn {
+.table .job-title {
 	width: 36%;
 }
