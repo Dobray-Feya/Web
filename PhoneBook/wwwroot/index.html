@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Телефонная книга (jQuery)</title>
+    <link href="normalize.css" rel="stylesheet" />
+    <link href="Libs/jquery-ui-1.13.2/jquery-ui.css" rel="stylesheet" />
+    <link href="styles.css" rel="stylesheet" />
+    <script src="Libs/jquery-3.7.1.js" defer></script>
+    <script src="Libs/jquery-ui-1.13.2/jquery-ui.js" defer></script>
+    <script src="mainScript.js" defer></script>
+    <script src="filters.js" defer></script>
+</head>
+<body>
+    <div class="phone-book">
+        <form class="add-contact-form" id="add-contact-form">
+            <h1>Добавить контакт</h1>
+            <div class="record">
+                <label>
+                    Фамилия:<br />
+                    <input type="text" id="last-name-field" placeholder="Введите фамилию" />
+                </label>
+            </div>
+            <div class="record">
+                <label>
+                    Имя:<br />
+                    <input type="text" id="name-field" placeholder="Введите имя" />
+                </label>
+            </div>
+            <div class="record">
+                <label>
+                    Номер телефона:<br />
+                    <input type="text" id="phone-field" placeholder="Введите номер телефона" />
+                </label>
+            </div>
+            <div>
+                <button type="submit" class="add-contact-button" id="add-contact-button">Добавить</button>
+            </div>
+        </form>
+
+        <button type="button" class="delete-selected-contacts-button" id="delete-selected-contacts-button">Удалить выбранные</button>
+
+        <div class="tools">
+            <input type="text" class="search-field" id="search-field" placeholder="Поиск">
+
+            <button type="button" class="search-button" id="search-button">Найти</button>
+
+            <button type="button" class="cancel-search-button" id="cancel-search-button">Сбросить</button>
+        </div>
+
+        <table class="contacts-table" id="contacts-table">
+            <thead>
+                <tr>
+                    <th id="checkbox-th"><input type="checkbox"></th>
+                    <th>№</th>
+                    <th>Фамилия</th>
+                    <th>Имя</th>
+                    <th>Номер телефона</th>
+                    <th> </th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+
+        <div id="confirm-delete-dialog" title="Подтвердите удаление" style="display: none;">
+            <p>
+                <span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>
+                Выбранные контакты будут удалены из списка. Удалить?
+            </p>
+        </div>
+
+        <div id="not-uniq-phone-number-dialog-message" title="Ошибка" style="display: none;">
+            <p>
+                <span class="ui-icon ui-icon-circle-check" style="float:left; margin:0 7px 50px 0;"></span>
+                Введенный номер телефона уже есть в списке контактов.
+            </p>
+            <p>
+                Номер телефона не может быть добавлен повторно.
+            </p>
+        </div>
+
+        <div id="no-checked-contacts-dialog-message" title="Ошибка" style="display: none;">
+            <p>
+                <span class="ui-icon ui-icon-circle-check" style="float:left; margin:0 7px 50px 0;"></span>
+                Не выбрано ни одного контакта.
+            </p>
+            <p>
+                Для удаления контактов отметьте их в таблице с помощью флажков.
+            </p>
+        </div>
+    </div>
+</body>
+</html>
