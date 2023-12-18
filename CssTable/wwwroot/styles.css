@@ -3,15 +3,15 @@
 }
 
 body {
-	/*background-image: url("CSS_Table.jpg"); /*test*/
-	/*opacity: 1; /*test*/
+	background-image: url("CSS_Table.jpg"); /*test*/
+	opacity: 1; /*test*/
 }
 
 .container {
 	max-width: 860px;
 }
 
-.table table {
+.table {
 	width: 100%;
 	border-collapse: collapse;
 	text-align: left;
@@ -24,12 +24,12 @@ body {
 	color: #FFF;
 	background-color: #3598DB;
 	border: 1px solid #AFD7F0;
-	padding: 11px 0 11px 10px;
+	padding: 12px 10px 8px;
 }
 
 .table td {
 	border: 1px solid #CECECE;
-	padding: 12px 12px 10px;
+	padding: 12px;
 }
 
 .table tr:nth-child(odd) {
