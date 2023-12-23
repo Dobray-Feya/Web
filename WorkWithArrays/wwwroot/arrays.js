@@ -3,8 +3,8 @@
 (function () {
     console.log("Подзадача 1");
 
-    function sortDescending(array) {
-        array.sort((n1, n2) => n2 - n1);
+    function sortDescending(numbersArray) {
+        numbersArray.sort((n1, n2) => n2 - n1);
     }
 
     function getFirstElements(array, count) {
@@ -15,14 +15,14 @@
         return array.slice(-count);
     }
 
-    function getEvenNumbersSum(array) {
-        return array
+    function getEvenNumbersSum(numbersArray) {
+        return numbersArray
             .filter(n => n % 2 === 0)
-            .reduce((n1, n2) => n1 + n2, 0);
+            .reduce((elementsSum, newElement) => elementsSum + newElement, 0);
     }
 
     function printArray(array, text) {
-        if ((typeof text === "string")) {
+        if (typeof text === "string") {
             console.log(text + ":");
         }
 
@@ -51,7 +51,7 @@
     console.log("Подзадача 2");
 
     function createNumbersArray(count) {
-        let array = [];
+        const array = [];
 
         for (let i = 1; i <= count; i++) {
             array.push(i);
@@ -60,10 +60,10 @@
         return array;
     }
 
-    function getEvenNumbersSquares(array) {
-        return array
-            .filter(x => (x % 2 === 0))
-            .map(x => x * x);
+    function getEvenNumbersSquares(numbersArray) {
+        return numbersArray
+            .filter(n => n % 2 === 0)
+            .map(n => n * n);
     }
 
     const array2 = createNumbersArray(100);
