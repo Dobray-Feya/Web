@@ -3,68 +3,129 @@
         {
             name: "Россия",
             cities: [
-                { name: "Екатеринбург", "population": "1493600" },
-                { name: "Казань", "population": "1259173" },
-                { name: "Москва", "population": "13015126" },
-                { name: "Нижний Новгород", "population": "1233949" },
-                { name: "Новосибирск", "population": "1621330" },
-                { name: "Санкт-Петербург", "population": "5607916" },
-                { name: "Челябинск", "population": "1179288" }
+                {
+                    name: "Екатеринбург",
+                    population: 1493600
+                },
+                {
+                    name: "Казань",
+                    population: 1259173
+                },
+                {
+                    name: "Москва",
+                    population: 13015126
+                },
+                {
+                    name: "Нижний Новгород",
+                    population: 1233949
+                },
+                {
+                    name: "Новосибирск",
+                    population: 1621330
+                },
+                {
+                    name: "Санкт-Петербург",
+                    population: 5607916
+                },
+                {
+                    name: "Челябинск",
+                    population: 1179288
+                }
             ]
         },
         {
             name: "Китай",
             cities: [
-                { name: "Гуанчжоу", "population": "14043500" },
-                { name: "Пекин", "population": "21705000" },
-                { name: "Тяньцзинь", "population": "15469500" },
-                { name: "Ухань", "population": "10607700" },
-                { name: "Чунцин", "population": "30751600" },
-                { name: "Шанхай", "population": "24152700" },
-                { name: "Шеньчжэнь", "population": "11908400" }
+                {
+                    name: "Гуанчжоу",
+                    population: 14043500
+                },
+                {
+                    name: "Пекин",
+                    population: 21705000
+                },
+                {
+                    name: "Тяньцзинь",
+                    population: 15469500
+                },
+                {
+                    name: "Ухань",
+                    population: 10607700
+                },
+                {
+                    name: "Чунцин",
+                    population: 30751600
+                },
+                {
+                    name: "Шанхай",
+                    population: 24152700
+                },
+                {
+                    name: "Шеньчжэнь",
+                    population: 11908400
+                }
             ]
         },
         {
             name: "Индия",
             cities: [
-                { name: "Ахмадабад", "population": "5570585" },
-                { name: "Бангалор", "population": "8425970" },
-                { name: "Дели", "population": "11007835" },
-                { name: "Мумбаи", "population": "12478447" },
-                { name: "Хайдарабад", "population": "6809970" },
-                { name: "Ченнаи", "population": "4681087" }
+                {
+                    name: "Ахмадабад",
+                    population: 5570585
+                },
+                {
+                    name: "Бангалор",
+                    population: 8425970
+                },
+                {
+                    name: "Дели",
+                    population: 11007835
+                },
+                {
+                    name: "Мумбаи",
+                    population: 12478447
+                },
+                {
+                    name: "Хайдарабад",
+                    population: 6809970
+                },
+                {
+                    name: "Ченнаи",
+                    population: 4681087
+                }
             ]
         }
     ];
 
-    function getCountriesNamesWithMaxCitiesCount(countries) {
-        let countriesWithmaxCitiesCount = [];
+    function getCountriesWithMaxCitiesCount(countries) {
+        const countriesWithMaxCitiesCount = [];
         let maxCitiesCount = 0;
 
-        countries.forEach((country) => {
-            const citiesCount = country.cities.length;
+        countries.forEach(country => {
+            let citiesCount = country.cities.length;
 
             if (citiesCount > maxCitiesCount) {
                 maxCitiesCount = citiesCount;
-                countriesWithmaxCitiesCount = [country];
+                countriesWithMaxCitiesCount.splice(0, countriesWithMaxCitiesCount.length, country);
             } else if (citiesCount === maxCitiesCount) {
-                countriesWithmaxCitiesCount.push(country);
+                countriesWithMaxCitiesCount.push(country);
             }
         });
 
-        return countriesWithmaxCitiesCount.map(country => country.name);
+        return countriesWithMaxCitiesCount;
     }
 
     console.log(`Страны с наибольшим числом городов:`);
-    console.log(getCountriesNamesWithMaxCitiesCount(countries).join(", "));
+    console.log(getCountriesWithMaxCitiesCount(countries)
+        .map(country => country.name)
+        .join(", "));
 
-    function getContriesPopulations(countries) {
-        let countriesPopulations = {};
+    function getCountriesPopulations(countries) {
+        const countriesPopulations = {};
 
         countries.forEach(country => {
             countriesPopulations[country.name] = country.cities
-                .map(city => city.population)
-                .reduce((e1, e2) => Number(e1) + Number(e2), 0)
+                .reduce((elementsSum, newElement) => elementsSum + newElement.population, 0);
         });
 
         return countriesPopulations;
@@ -72,7 +133,7 @@
 
     console.log(`Численность населения по странам:`);
 
-    const countriesPopulations = getContriesPopulations(countries);
+    const countriesPopulations = getCountriesPopulations(countries);
 
     for (let countryName in countriesPopulations) {
         console.log(`${countryName} - ${new Intl.NumberFormat("ru-RU").format(countriesPopulations[countryName])}`);
