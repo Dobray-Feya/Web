@@ -1,23 +1,27 @@
 ﻿"use strict";
 
 document.addEventListener("DOMContentLoaded", function () {
-    const convertButton = document.getElementById("convertButton");
-    const celsiusField = document.getElementById("celsiusField");
+    const convertButton = document.getElementById("convert-button");
+    const celsiusField = document.getElementById("celsius-field");
+    const fahrenheitField = document.getElementById("fahrenheit-field");
+    const kelvinField = document.getElementById("kelvin-field");
 
-    convertButton.addEventListener("click", function (e) {
-        let celsiusTemperature = celsiusField.value.trim();
+
+    convertButton.addEventListener("click", function () {
+        const celsiusTemperatureString = celsiusField.value.trim();
+        const celsiusTemperature = Number(celsiusTemperatureString);
 
         celsiusField.classList.remove("invalid");
 
-        if (isNaN(celsiusTemperature)) {
+        if (celsiusTemperatureString === "" || isNaN(celsiusTemperature)) {
             celsiusField.classList.add("invalid");
             return;
         }
 
-        let fahrenheitTemperature = (9 * celsiusTemperature / 5 + 32).toFixed(2);
-        let kelvinTemperature = (Number(celsiusTemperature) + 273.15).toFixed(2);
+        const fahrenheitTemperature = (9 * celsiusTemperature / 5 + 32).toFixed(2);
+        const kelvinTemperature = (Number(celsiusTemperature) + 273.15).toFixed(2);
 
-        document.getElementById("fahrenheitField").setAttribute("value", fahrenheitTemperature);
-        document.getElementById("kelvinField").setAttribute("value", kelvinTemperature);
+        fahrenheitField.value = fahrenheitTemperature;
+        kelvinField.value = kelvinTemperature;
     });
-})
+});

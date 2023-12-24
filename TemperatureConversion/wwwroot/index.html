@@ -9,31 +9,56 @@
 </head>
 <body>
     <div class="container">
-        <div class="temperaturePanel">
-            <div class="temperatureBar">
+        <div class="temperature-panel">
+            <div class="temperature-bar">
                 <label>
                     <span class="field-caption"> Температура, C:</span>
-                    <input type="text" name="celsiusField" id="celsiusField" value="0" required maxlength="8" />
+
+                    <input type="text"
+                           name="celsius-field"
+                           id="celsius-field"
+                           value="0"
+                           required
+                           maxlength="8" />
+
                     <span class="error-message">Нужно ввести число</span>
                 </label>
             </div>
 
-            <div class="temperatureBar">
+            <div class="temperature-bar">
                 <div>&nbsp;</div>
-                <button type="button" class="button" name="convertButton" id="convertButton">Конвертировать</button>
+
+                <button type="button"
+                        name="convert-button"
+                        class="button"
+                        id="convert-button">
+                        Конвертировать
+                </button>
             </div>
 
-            <div class="temperatureBar">
+            <div class="temperature-bar">
                 <label>
                     <span class="field-caption">Температура, F:</span>
-                    <input type="text" name="fahrenheitField" id="fahrenheitField" readonly placeholder="" maxlength="5" />
+
+                    <input type="text"
+                           name="fahrenheit-field"
+                           id="fahrenheit-field"
+                           readonly
+                           placeholder=""
+                           maxlength="5" />
                 </label>
             </div>
 
-            <div class="temperatureBar">
+            <div class="temperature-bar">
                 <label>
                     <span class="field-caption">Температура, K:</span>
-                    <input type="text" name="kelvinField" id="kelvinField" readonly placeholder="" maxlength="5" />
+
+                    <input type="text"
+                           name="kelvin-field"
+                           id="kelvin-field"
+                           readonly
+                           placeholder=""
+                           maxlength="5" />
                 </label>
             </div>
         </div>

@@ -6,28 +6,28 @@
 	max-width: 550px;
 }
 
-.temperaturePanel {
+.temperature-panel {
 	width: 100%;
 }
 
-.temperaturePanel .temperatureBar,
-.button {
+.temperature-panel .temperature-bar,
+.temperature-panel .button {
 	font-family: Verdana, Arial, sans-serif;
 	font-size: 14px;
 	font-weight: bold;
 	color: #333;
 }
 
-.temperaturePanel .temperatureBar {
+.temperature-panel .temperature-bar {
 	width: 200px;
 	height: 100px;
 	padding: 16px;
-	display:inline-block;
-	vertical-align:top;
+	display: inline-block;
+	vertical-align: top;
 	line-height: 28px;
 }
 
-.temperaturePanel input[type="text"]{
+.temperature-panel input[type="text"]{
 	font-weight: normal;
 	width: 145px;
 	border: 1px solid #808080;
@@ -35,28 +35,29 @@
 	text-align: right;
 }
 
-.temperaturePanel .button {
+.temperature-panel .button {
 	width: 145px;
 	padding: 5px;
 	background-color: #75c3f7;
 	border: 1px solid #808080;
 }
 
-.temperaturePanel .button:hover {
+.temperature-panel .button:hover {
 	background-color: #4db4f8;
+	cursor: pointer;
 }
 
-.temperaturePanel input[type="text"].invalid {
+.temperature-panel input[type="text"].invalid {
 	border: 1px solid #f00;
 }
 
-.temperaturePanel .error-message{
+.temperature-panel .error-message{
 	font-size: 12px;
 	font-weight: normal;
 	display: none;
 	color: #f00;
 }
 
-.temperaturePanel .invalid + .error-message{
+.temperature-panel .invalid + .error-message{
 	display: block;
 }
