@@ -18,7 +18,7 @@
     function getEvenNumbersSum(numbersArray) {
         return numbersArray
             .filter(n => n % 2 === 0)
-            .reduce((elementsSum, newElement) => elementsSum + newElement, 0);
+            .reduce((sum, number) => sum + number, 0);
     }
 
     function printArray(array, text) {

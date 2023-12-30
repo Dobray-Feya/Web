@@ -115,7 +115,7 @@
         return countriesWithMaxCitiesCount;
     }
 
-    console.log(`Страны с наибольшим числом городов:`);
+    console.log("Страны с наибольшим числом городов:");
     console.log(getCountriesWithMaxCitiesCount(countries)
         .map(country => country.name)
         .join(", "));
@@ -125,17 +125,17 @@
 
         countries.forEach(country => {
             countriesPopulations[country.name] = country.cities
-                .reduce((elementsSum, newElement) => elementsSum + newElement.population, 0);
+                .reduce((populationSum, city) => populationSum + city.population, 0);
         });
 
         return countriesPopulations;
     }
 
-    console.log(`Численность населения по странам:`);
+    console.log("Численность населения по странам:");
 
     const countriesPopulations = getCountriesPopulations(countries);
 
-    for (let countryName in countriesPopulations) {
+    for (const countryName in countriesPopulations) {
         console.log(`${countryName} - ${new Intl.NumberFormat("ru-RU").format(countriesPopulations[countryName])}`);
     }
 })();
