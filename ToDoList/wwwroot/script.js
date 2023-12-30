@@ -2,72 +2,82 @@
 
 document.addEventListener("DOMContentLoaded", function () {
     const todoForm = document.getElementById("todo-form");
-    const addNewTaskField = document.getElementById("add-new-task-field");
-    const todolist = document.getElementById("todo-list");
+    const addTaskField = document.getElementById("add-task-field");
+    const todoList = document.getElementById("todo-list");
 
     todoForm.addEventListener("submit", function (e) {
         e.preventDefault(); /* чтобы форма не отправлялась и не выполнялось действие по умолчанию - перезагрузка страницы */
 
-        let newValue = addNewTaskField.value.trim();
+        let listItemText = addTaskField.value.trim();
 
-        addNewTaskField.classList.remove("invalid");
+        addTaskField.classList.remove("invalid");
 
-        if (newValue.length === 0) {
-            addNewTaskField.classList.add("invalid");
+        if (listItemText.length === 0) {
+            addTaskField.classList.add("invalid");
             return;
         }
 
         const listItem = document.createElement("li");
 
-        let listItemValue = newValue;
-
         function setViewMode() {
-            listItem.innerHTML = `<span class="list-item-value" >${listItemValue}</span>
+            listItem.innerHTML = `<div class="list-item-string"></div>
                     <button type="button" class="list-item-edit-button">Редактировать</button>
                     <button type="button" class="list-item-remove-button">Удалить</button>`;
 
+            const listItemString = listItem.querySelector(".list-item-string");
+            listItemString.textContent = listItemText;
+
             listItem.querySelector(".list-item-remove-button").addEventListener("click", function () {
                 listItem.remove();
-            })
+            });
 
             listItem.querySelector(".list-item-edit-button").addEventListener("click", function () {
                 listItem.innerHTML = `
                     <div>
-                        <input type="text" class="edit-task-field" id="edit-task-field" value="${listItemValue}">
+                        <input type="text" class="edit-task-field"> 
                         <div class="error-message">Не введен текст</div>
                     </div>
                     <button type="button" class="list-item-cancel-button">Отменить</button>
-                    <button type="button" class="list-item-save-button">Сохранить</button>
-                    `;
+                    <button type="button" class="list-item-save-button">Сохранить</button>`;
+
+                const editTaskField = listItem.querySelector(".edit-task-field");
+                editTaskField.value = listItemText;
 
                 listItem.querySelector(".list-item-cancel-button").addEventListener("click", function () {
                     setViewMode();
-                })
+                });
 
-                listItem.querySelector(".list-item-save-button").addEventListener("click", function () {
+                const saveButton = listItem.querySelector(".list-item-save-button");
 
-                    const editTaskField = document.getElementById("edit-task-field");
+                listItem.querySelector(".edit-task-field").addEventListener("keyup", function (e) {
+                    if (e.key === "Enter") {
+                        saveButton.click();
+                    }
+                });
 
-                    let editedValue = editTaskField.value.trim();
+                saveButton.addEventListener("click", function () {
+                    const editTaskField = listItem.querySelector(".edit-task-field");
+
+                    const editedText = editTaskField.value.trim();
 
                     editTaskField.classList.remove("invalid");
 
-                    if (editedValue.length === 0) {
+                    if (editedText.length === 0) {
                         editTaskField.classList.add("invalid");
                         return;
                     }
 
-                    listItemValue = editedValue;
+                    listItemText = editedText;
 
                     setViewMode();
-                })
-            })
+                });
+            });
         }
 
         setViewMode();
 
-        todolist.append(listItem);
+        todoList.append(listItem);
 
-        addNewTaskField.value = "";
-    })
-})
+        addTaskField.value = "";
+    });
+});

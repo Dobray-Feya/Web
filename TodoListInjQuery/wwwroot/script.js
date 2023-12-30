@@ -2,31 +2,32 @@
 
 $(function () {
     const todoForm = $("#todo-form");
-    const addNewTaskField = $("#add-new-task-field");
-    const todolist = $("#todo-list");
+    const addNewTaskField = $("#add-task-field");
+    const todoList = $("#todo-list");
 
     todoForm.submit(function (e) {
         e.preventDefault(); /* чтобы форма не отправлялась и не выполнялось действие по умолчанию - перезагрузка страницы */
 
-        let newValue = $.trim(addNewTaskField.val());
+        let listItemText = $.trim(addNewTaskField.val());
 
         addNewTaskField.removeClass("invalid");
 
-        if (newValue.length === 0) {
+        if (listItemText.length === 0) {
             addNewTaskField.addClass("invalid");
             return;
         }
 
         const listItem = $("<li></li>");
 
-        let listItemValue = newValue;
-
         function setViewMode() {
             listItem.html(`
-                    <span class="list-item-value" >${listItemValue}</span>
+                    <div class="list-item-string"></div>
                     <button type="button" class="list-item-edit-button">Редактировать</button>
                     <button type="button" class="list-item-remove-button">Удалить</button>
-                    `);
+            `);
+
+            const listItemString = listItem.find(".list-item-string");
+            listItemString.text(listItemText);
 
             listItem.find(".list-item-remove-button").click(function () {
                 $(function () {
@@ -47,46 +48,48 @@ $(function () {
                         }
                     });
                 });
-            })
+            });
 
             listItem.find(".list-item-edit-button").click(function () {
                 listItem.html(`
                     <div>
-                        <input type="text" class="edit-task-field" id="edit-task-field" value="${listItemValue}">
+                        <input type="text" class="edit-task-field">
                         <div class="error-message">Не введен текст</div>
                     </div>
                     <button type="button" class="list-item-cancel-button">Отменить</button>
                     <button type="button" class="list-item-save-button">Сохранить</button>
                     `);
 
+                const editTaskField = listItem.find(".edit-task-field");
+                editTaskField.val(listItemText);
+
                 listItem.find(".list-item-cancel-button").click(function () {
                     setViewMode();
-                })
+                });
 
                 listItem.find(".list-item-save-button").click(function () {
+                    const editTaskField = listItem.find(".edit-task-field");
 
-                    const editTaskField = $("#edit-task-field");
-
-                    let editedValue = $.trim(editTaskField.val());
+                    const editedText = $.trim(editTaskField.val());
 
                     editTaskField.removeClass("invalid");
 
-                    if (editedValue.length === 0) {
+                    if (editedText.length === 0) {
                         editTaskField.addClass("invalid");
                         return;
                     }
 
-                    listItemValue = editedValue;
+                    listItemText = editedText;
 
                     setViewMode();
-                })
-            })
+                });
+            });
         }
 
         setViewMode();
 
-        todolist.append(listItem);
+        todoList.append(listItem);
 
         addNewTaskField.val("");
-    })
-})
+    });
+});

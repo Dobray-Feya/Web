@@ -3,9 +3,8 @@
 }
 
 .todo-form {
-	width: 800px;
+	width: 550px;
 	margin: 16px;
-
 	font-family: Verdana, Arial, sans-serif;
 	font-size: 14px;
 	font-weight: 400;
@@ -13,19 +12,22 @@
 }
 
 .todo-form div,
-button {
+.todo-form button {
 	display: inline-block;
 	vertical-align: top;
 }
 
-.todo-form h1 {
-	font-weight: 300;
+.todo-form li button {
+	text-align: right;
 }
 
-.todo-form input[type="text"] {
-	width: 300px;
-	/*border: 1px solid #808080;*/
-	padding: 5px;
+.todo-form .list-item-string,
+.todo-form .edit-task-field {
+	text-align: left;
+}
+
+.todo-form h1 {
+	font-weight: 300;
 }
 
 .todo-form .add-task-button {
@@ -33,6 +35,7 @@ button {
 	padding: 5px;
 	background-color: #75c3f7;
 	border: 1px solid #808080;
+	cursor: pointer;
 }
 
 .todo-form .add-task-button:hover {
@@ -40,20 +43,27 @@ button {
 }
 
 .todo-form .todo-list{
+	width: 100%;
 	list-style-type: none;
 	padding: 0;
 }
 
 .todo-form .todo-list li {
-	padding: 0 0 12px 0;
+	padding: 0 0 12px;
 }
 
-.todo-form .list-item-edit-button,
-.list-item-remove-button {
+.todo-form .add-task-field,
+.todo-form .list-item-string,
+.todo-form .edit-task-field {
+	width: 300px;
+	padding: 5px;
+}
+
+.todo-form .todo-list button {
 	margin-left: 5px;
+	padding: 5px;
+	cursor: pointer;
 }
-
-
 
 .todo-form .invalid {
 	border-color: #f00;
