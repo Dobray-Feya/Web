@@ -4,10 +4,19 @@ document.addEventListener("DOMContentLoaded", function () {
     const todoForm = document.getElementById("todo-form");
     const addTaskField = document.getElementById("add-task-field");
     const todoList = document.getElementById("todo-list");
+    const addTaskButton = document.getElementById("add-task-button");
 
     todoForm.addEventListener("submit", function (e) {
         e.preventDefault(); /* чтобы форма не отправлялась и не выполнялось действие по умолчанию - перезагрузка страницы */
+    });
 
+    addTaskField.addEventListener("keyup", function (e) {
+        if (e.key === "Enter") {
+            addTaskButton.click();
+        }
+    });
+
+    addTaskButton.addEventListener("click", function () {
         let listItemText = addTaskField.value.trim();
 
         addTaskField.classList.remove("invalid");
