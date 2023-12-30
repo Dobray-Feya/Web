@@ -2,18 +2,27 @@
 
 $(function () {
     const todoForm = $("#todo-form");
-    const addNewTaskField = $("#add-task-field");
+    const addTaskField = $("#add-task-field");
     const todoList = $("#todo-list");
+    const addTaskButton = $("#add-task-button");
 
     todoForm.submit(function (e) {
         e.preventDefault(); /* чтобы форма не отправлялась и не выполнялось действие по умолчанию - перезагрузка страницы */
+    });
 
-        let listItemText = $.trim(addNewTaskField.val());
+    addTaskField.keyup(function (e) {
+        if (e.key === "Enter") {
+            addTaskButton.triggerHandler("click");
+        }
+    });
 
-        addNewTaskField.removeClass("invalid");
+    addTaskButton.click(function () {
+        let listItemText = $.trim(addTaskField.val());
+
+        addTaskField.removeClass("invalid");
 
         if (listItemText.length === 0) {
-            addNewTaskField.addClass("invalid");
+            addTaskField.addClass("invalid");
             return;
         }
 
@@ -42,7 +51,7 @@ $(function () {
 
                                 listItem.remove();
                             },
-                            Отмена: function () {
+                            "Отмена": function () {
                                 $(this).dialog("close");
                             }
                         }
@@ -67,7 +76,15 @@ $(function () {
                     setViewMode();
                 });
 
-                listItem.find(".list-item-save-button").click(function () {
+                const saveButton = listItem.find(".list-item-save-button");
+
+                listItem.find(".edit-task-field").keyup(function (e) {
+                    if (e.key === "Enter") {
+                        saveButton.triggerHandler("click");
+                    }
+                });
+
+                saveButton.click(function () {
                     const editTaskField = listItem.find(".edit-task-field");
 
                     const editedText = $.trim(editTaskField.val());
@@ -90,6 +107,6 @@ $(function () {
 
         todoList.append(listItem);
 
-        addNewTaskField.val("");
+        addTaskField.val("");
     });
 });
