@@ -1,0 +1,11 @@
+﻿* {
+	box-sizing: border-box;
+}
+
+.head-row {
+	border: solid 1px #808080;
+}
+
+.head-cell, .cell {
+	border: solid 1px #808080;
+}

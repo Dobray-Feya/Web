@@ -37,7 +37,7 @@ $(function () {
 
                         updateRowsIds();
                     },
-                    Отмена: function () {
+                    "Отмена": function () {
                         $(this).dialog("close");
                     }
                 }
@@ -191,7 +191,7 @@ $(function () {
 
                                 updateRowsIds();
                             },
-                            Отмена: function () {
+                            "Отмена": function () {
                                 $(this).dialog("close");
                             }
                         }
