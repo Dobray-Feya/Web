@@ -2,24 +2,33 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>ToDo list in Vue</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ToDo list in Vue using Bootstrap</title>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js" defer></script>
     <script src="node_modules/vue/dist/vue.global.js" defer></script>
     <script src="script.js" defer></script>
+    <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet" />
+    <!--<script type="text/x-template" id="todo-list-template">
+        <div>
+            <todo-item @remove-item="removeItem"
+                       :item="item"
+                       v-for="item in items"
+                       :key="item.id">
+            </todo-item>
+        </div>
+    </script>
+    <script type="text/x-template" id="todo-item-template">
+        <div>
+            <span v-text="item.text"></span>
+            <button type="button" @click="remove">X</button>
+        </div>
+    </script>-->
 </head>
 <body>
-    <div id="form">
-        <div>
-            <div>Ваш возраст: <span v-text="message">23</span></div>
-        </div>
-        <label>
-            Введите ваш возраст: <input v-model="message" type="text">
-        </label>
-        <div>
-            This is message:
-            {{message}}
-            <button v-on:click="changeMessage" type="button">OK</button>
-        </div>
-
+    <div id="app" class="container">
+        <h1>Список дел</h1>
+        <todo-list></todo-list>
     </div>
 </body>
 </html>
