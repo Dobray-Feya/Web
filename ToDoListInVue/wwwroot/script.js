@@ -52,15 +52,53 @@
             }
         },
 
+        methods: {
+            editItem() {
+                this.isEditing = true;
+            },
+
+            saveItem() {
+                this.isEditing = false;
+            }
+        },
+
         template: `
         <li>
-            <div v-if="!isEditing" class="row">
+            <div v-if="!isEditing" class="row mb-2">
                 <span class="col me-1">{{ item.text }}</span>
-                <button type="button" class="btn btn-primary col-auto me-1">Редактировать</button>
-                <button type="button" class="btn btn-danger col-auto">Удалить</button>
+                <div class="col-auto me-1">
+                   <button type="button"
+                           class="btn btn-primary"
+                           @click="editItem">
+                           Редактировать
+                   </button>
+                </div>
+                <div class="col-auto">
+                   <button type="button"
+                           class="btn btn-danger"
+                           @click="deleteItem">
+                           Удалить
+                   </button>
+                </div>
            </div>
-           <div v-else>
-               <input type="text" v-model="item.text">
+           <div v-else class="row mb-2">
+               <input type="text" 
+                      v-model="item.text"
+                      class="col me-1 form-control">
+               <div class="col-auto me-1">
+                  <button type="button"
+                           class="btn btn-success"
+                           @click="saveItem">
+                           Сохранить
+                   </button>
+                </div>
+                <div class="col-auto">
+                   <button type="button"
+                           class="btn btn-secondary"
+                           @click="cancelEditingItem">
+                           Отменить
+                   </button>
+                </div>
            </div>
         </li>`
     })
