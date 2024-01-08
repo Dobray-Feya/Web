@@ -27,7 +27,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WorkWithLodash", "WorkWithL
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WorkWithBootstrap", "WorkWithBootstrap\WorkWithBootstrap.csproj", "{07753CC1-356D-4C3F-BE53-526C8ED98885}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoListInVue", "ToDoListInVue\ToDoListInVue.csproj", "{3E77CC6C-61D3-4CAC-B535-557A4402396B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoListInVue", "ToDoListInVue\ToDoListInVue.csproj", "{3E77CC6C-61D3-4CAC-B535-557A4402396B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhoneBookVueServer", "PhoneBookVueServer\PhoneBookVueServer.csproj", "{F70004E3-958F-4324-91DD-93AD3A58F92B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -87,6 +89,10 @@ Global
 		{3E77CC6C-61D3-4CAC-B535-557A4402396B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3E77CC6C-61D3-4CAC-B535-557A4402396B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3E77CC6C-61D3-4CAC-B535-557A4402396B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F70004E3-958F-4324-91DD-93AD3A58F92B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F70004E3-958F-4324-91DD-93AD3A58F92B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F70004E3-958F-4324-91DD-93AD3A58F92B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F70004E3-958F-4324-91DD-93AD3A58F92B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
