@@ -3,40 +3,34 @@
         data() {
             return {
                 items: [],
-                newTodoItemId: 1,
-                newTodoItemText: ""
+                newItemId: 1,
+                newItemText: ""
             }
         },
+
+        template: "#todo-list-template",
 
         methods: {
-            addNewTodoItem() {
-                const newTodoItem = {
-                    id: this.newTodoItemId,
-                    text: this.newTodoItemText
-                };
+            addNewItem() {
+                this.newItemText = this.newItemText.trim();
 
-                this.items.push(newTodoItem);
+                if (this.newItemText.length !== 0) {
+                    const newItem = {
+                        id: this.newItemId,
+                        text: this.newItemText
+                    };
 
-                this.newTodoItemId++;
-                this.newTodoItemText = "";
+                    this.items.push(newItem);
+
+                    this.newItemId++;
+                    this.newItemText = "";
+                }
+            },
+
+            removeItem(item) {
+                this.items = this.items.filter(e => e !== item);
             }
-        },
-
-        template: `
-        <form @submit.prevent="addNewTodoItem" class="row mb-3">
-            <label class="col">
-                <input type="text" v-model="newTodoItemText" class="form-control"/>
-            </label>
-            <div class="col-auto">
-                <button class="btn btn-primary">Добавить</button>
-            </div>
-        </form>
-        <ul class="list-unstyled">
-            <todo-list-item v-for="item in items"
-                            :key="item.id" 
-                            :item="item">
-            </todo-list-item>
-        </ul>`
+        }
     })
     .component("TodoListItem", {
         props: {
@@ -48,58 +42,35 @@
 
         data() {
             return {
-                isEditing: false
+                isEditing: false,
+                initialText: this.item.text
             }
         },
+
+        template: "#todo-item-template",
 
         methods: {
-            editItem() {
+            edit() {
                 this.isEditing = true;
+                this.initialText = this.item.text;
             },
 
-            saveItem() {
+            remove() {
+                this.$emit("remove-item", this.item);
+            },
+
+            save() {
+                this.item.text = this.item.text.trim();
+
+                if (this.item.text.length !== 0) {
+                    this.isEditing = false;
+                }
+            },
+
+            cancelEditing() {
+                this.item.text = this.initialText;
                 this.isEditing = false;
             }
-        },
-
-        template: `
-        <li>
-            <div v-if="!isEditing" class="row mb-2">
-                <span class="col me-1">{{ item.text }}</span>
-                <div class="col-auto me-1">
-                   <button type="button"
-                           class="btn btn-primary"
-                           @click="editItem">
-                           Редактировать
-                   </button>
-                </div>
-                <div class="col-auto">
-                   <button type="button"
-                           class="btn btn-danger"
-                           @click="deleteItem">
-                           Удалить
-                   </button>
-                </div>
-           </div>
-           <div v-else class="row mb-2">
-               <input type="text" 
-                      v-model="item.text"
-                      class="col me-1 form-control">
-               <div class="col-auto me-1">
-                  <button type="button"
-                           class="btn btn-success"
-                           @click="saveItem">
-                           Сохранить
-                   </button>
-                </div>
-                <div class="col-auto">
-                   <button type="button"
-                           class="btn btn-secondary"
-                           @click="cancelEditingItem">
-                           Отменить
-                   </button>
-                </div>
-           </div>
-        </li>`
+        }
     })
 .mount("#app")

@@ -9,25 +9,114 @@
     <script src="script.js" defer></script>
     <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="styles.css" rel="stylesheet" />
-    <!--<script type="text/x-template" id="todo-list-template">
-        <div>
-            <todo-item @remove-item="removeItem"
-                       :item="item"
-                       v-for="item in items"
-                       :key="item.id">
-            </todo-item>
-        </div>
+
+    <script type="text/x-template" id="todo-list-template">
+        <form @submit.prevent="addNewItem" class="row was-validated">
+            <div class="col mb-3">
+                <input type="text"
+                       v-model="newItemText"
+                       class="form-control"
+                       required />
+                <div class="invalid-feedback">
+                    Введите текст
+                </div>
+            </div>
+            <div class="col-auto ps-2 pe-0">
+                <button class="btn btn-primary">Добавить</button>
+            </div>
+
+            <ul class="list-unstyled">
+                <todo-list-item v-for="item in items"
+                                :key="item.id"
+                                :item="item"
+                                @remove-item="removeItem">
+                </todo-list-item>
+            </ul>
+        </form>
     </script>
+
     <script type="text/x-template" id="todo-item-template">
-        <div>
-            <span v-text="item.text"></span>
-            <button type="button" @click="remove">X</button>
-        </div>
-    </script>-->
+        <li>
+            <div v-if="!isEditing">
+                <div class="row mb-2">
+                    <span class="col">
+                        {{ item.text }}
+                    </span>
+                    <div class="col-auto ps-2 pe-0">
+                        <button type="button"
+                                class="btn btn-primary"
+                                @click="edit">
+                            Редактировать
+                        </button>
+                    </div>
+                    <div class="col-auto ps-2 pe-0">
+                        <button type="button"
+                                class="btn btn-danger"
+                                data-bs-toggle="modal" data-bs-target="#removeItemModal" @click="console.log(item.text)">
+                            Удалить
+                        </button>
+                        <!-- Диалог - предупреждение об удалении элемента -->
+                        <div class="modal fade" id="removeItemModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Предупреждении об удалении</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Дело будет удалено из списка.
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button"
+                                                class="btn btn-secondary"
+                                                data-bs-dismiss="modal">
+                                            Отменить
+                                        </button>
+                                        <button type="button"
+                                                class="btn btn-primary"
+                                                data-bs-dismiss="modal"
+                                                @click="remove">
+                                            Удалить
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div v-else>
+                <div class="row mb-2">
+                    <div class="col">
+                        <textarea class="form-control align-baseline"
+                                  v-model="item.text" required></textarea>
+                        <div class="invalid-feedback">
+                            Введите текст
+                        </div>
+                    </div>
+
+                    <div class="col-auto ps-2 pe-0">
+                        <button type="button"
+                                class="btn btn-success"
+                                @click="save">
+                            Сохранить
+                        </button>
+                    </div>
+                    <div class="col-auto ps-2 pe-0">
+                        <button type="button"
+                                class="btn btn-secondary"
+                                @click="cancelEditing">
+                            Отменить
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </script>
 </head>
 <body>
     <div id="app" class="container">
-        <h1>Список дел</h1>
+        <h1 class="display-3">Список дел</h1>
         <todo-list></todo-list>
     </div>
 </body>
