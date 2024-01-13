@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const fahrenheitField = document.getElementById("fahrenheit-field");
     const kelvinField = document.getElementById("kelvin-field");
 
-
     convertButton.addEventListener("click", function () {
         const celsiusTemperatureString = celsiusField.value.trim();
         const celsiusTemperature = Number(celsiusTemperatureString);
@@ -18,10 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        const fahrenheitTemperature = (9 * celsiusTemperature / 5 + 32).toFixed(2);
-        const kelvinTemperature = (Number(celsiusTemperature) + 273.15).toFixed(2);
-
-        fahrenheitField.value = fahrenheitTemperature;
-        kelvinField.value = kelvinTemperature;
+        fahrenheitField.value = (9 * celsiusTemperature / 5 + 32).toFixed(2);
+        kelvinField.value = (celsiusTemperature + 273.15).toFixed(2);
     });
 });
