@@ -1,7 +1,6 @@
 ﻿"use strict";
 
 $(function () {
-    const contactsTable = $("#contacts-table");
     const searchField = $("#search-field");
     const searchButton = $("#search-button");
     const cancelSearchButton = $("#cancel-search-button");
@@ -15,7 +14,7 @@ $(function () {
             return;
         }
 
-        $("#contacts-table tbody tr").each(function (i) {
+        $("#contacts-table tbody tr").each(function () {
             const currentRow = $(this);
 
             if (currentRow.find(".last-name-td").text().toLowerCase().indexOf(searchString) === -1 &&
@@ -23,12 +22,10 @@ $(function () {
                 currentRow.find(".phone-td").text().toLowerCase().indexOf(searchString) === -1) {
                 currentRow.hide();
             }
-        })
-    })
+        });
+    });
 
     cancelSearchButton.click(function () {
-        $("#contacts-table tbody tr").each(function (i) {
-            $(this).show();
-        })
-    })
-})
+        $("#contacts-table tbody tr").show();
+    });
+});

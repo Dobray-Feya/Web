@@ -3,11 +3,11 @@
 }
 
 :root {
-	--color1: #2173c2; /*темно-синий*/
-	--color2: #efecd7; /*бледно-желтый*/
-	--color3: #4db4f8; /*светло-синий*/
-	--color4: #fff;    /*белый*/
-	--error-color: #f00;
+	--primary-color: #2173c2;    /* темно-синий */
+	--additional-color: #efecd7; /* бледно-желтый */
+	--secondary-color: #4db4f8;  /* светло-синий */
+	--control-font-color: #fff;  /* белый */
+	--error-color: #f00;         /* красный */
 }
 
 .phone-book {
@@ -15,7 +15,7 @@
 	font-size: 14px;
 	font-weight: 400;
 	color: #333;
-	max-width: 900px;
+	max-width: 850px;
 	margin: 20px 24px;
 }
 
@@ -23,7 +23,7 @@
 	width: 300px;
 	padding: 24px;
 	margin: 24px 0;
-	background-color: var(--color2);
+	background-color: var(--additional-color);
 }
 
 .add-contact-form h1 {
@@ -47,9 +47,9 @@
 
 .phone-book button {
 	padding: 7px;
-	background-color: var(--color1);
-	border: 1px solid var(--color3);
-	color: var(--color4);
+	background-color: var(--primary-color);
+	border: 1px solid var(--secondary-color);
+	color: var(--control-font-color);
 	font-weight: bold;
 }
 
@@ -59,12 +59,12 @@
 }
 
 .phone-book button:hover {
-	background-color: var(--color3);
+	background-color: var(--secondary-color);
 	cursor: pointer;
 }
 
 .add-contact-form .record-edit-button,
-.record-remove-button {
+.add-contact-form .record-remove-button {
 	margin-left: 5px;
 }
 
@@ -85,26 +85,23 @@
 .phone-book .contacts-table thead {
 	margin: 20px 24px;
 	width: 100%;
-	background-color: var(--color1);
-	color: var(--color4);
+	background-color: var(--primary-color);
+	color: var(--control-font-color);
 	font-weight: bold;
 }
 
-.phone-book .contacts-table td input[type="text"] {
-	width: 200px;
-}
-
-.phone-book .contacts-table th, td {
+.phone-book .contacts-table th,
+.phone-book .contacts-table td {
 	padding: 7px 10px;
 }
 
 .phone-book .contacts-table th {
-	border: 1px solid var(--color3);
+	border: 1px solid var(--secondary-color);
 }
 
 .phone-book .contacts-table td {
 	
-	border: 1px solid var(--color3);
+	border: 1px solid var(--secondary-color);
 }
 
 .phone-book .contacts-table td.center {
@@ -125,4 +122,14 @@
 
 .phone-book .tools input[type="text"] {
 	width: 400px;
+}
+
+ui-icon ui-icon-alert {
+	float: left;
+	margin: 12px 12px 20px 0;
+}
+
+ui-icon ui-icon-circle-check {
+	float: left;
+	margin: 0 7px 50px 0;
 }

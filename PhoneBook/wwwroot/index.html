@@ -4,10 +4,11 @@
     <meta charset="utf-8" />
     <title>Телефонная книга (jQuery)</title>
     <link href="normalize.css" rel="stylesheet" />
-    <link href="Libs/jquery-ui-1.13.2/jquery-ui.css" rel="stylesheet" />
+
+    <link href="node_modules/jquery-ui/jquery-ui.css" rel="stylesheet" />
     <link href="styles.css" rel="stylesheet" />
-    <script src="Libs/jquery-3.7.1.js" defer></script>
-    <script src="Libs/jquery-ui-1.13.2/jquery-ui.js" defer></script>
+    <script src="node_modules/jquery/dist/jquery.js" defer></script>
+    <script src="node_modules/jquery-ui/dist/jquery-ui.js" defer></script>
     <script src="mainScript.js" defer></script>
     <script src="filters.js" defer></script>
 </head>
@@ -65,14 +66,14 @@
 
         <div id="confirm-delete-dialog" title="Подтвердите удаление" style="display: none;">
             <p>
-                <span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>
+                <span class="ui-icon ui-icon-alert"></span>
                 Выбранные контакты будут удалены из списка. Удалить?
             </p>
         </div>
 
-        <div id="not-uniq-phone-number-dialog-message" title="Ошибка" style="display: none;">
+        <div id="not-unique-phone-number-dialog-message" title="Ошибка" style="display: none;">
             <p>
-                <span class="ui-icon ui-icon-circle-check" style="float:left; margin:0 7px 50px 0;"></span>
+                <span class="ui-icon ui-icon-circle-check"></span>
                 Введенный номер телефона уже есть в списке контактов.
             </p>
             <p>
@@ -82,7 +83,7 @@
 
         <div id="no-checked-contacts-dialog-message" title="Ошибка" style="display: none;">
             <p>
-                <span class="ui-icon ui-icon-circle-check" style="float:left; margin:0 7px 50px 0;"></span>
+                <span class="ui-icon ui-icon-circle-check" style="float: left; margin: 0 7px 50px 0; }"></span>
                 Не выбрано ни одного контакта.
             </p>
             <p>
