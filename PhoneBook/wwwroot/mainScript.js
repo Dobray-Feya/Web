@@ -28,13 +28,13 @@ $(function () {
 
                         checkedRows.remove();
 
-                        function updateRowsIds() {
+                        function updateRowsNumbers() {
                             $("#contacts-table tbody tr").each(function (i) {
-                                $(this).find(".row-id-td").text(i + 1);
+                                $(this).find(".row-number-td").text(i + 1);
                             });
                         }
 
-                        updateRowsIds();
+                        updateRowsNumbers();
                     },
                     "Отмена": function () {
                         $(this).dialog("close");
@@ -153,7 +153,7 @@ $(function () {
         }
 
         rowsCount++;
-        let rowId = rowsCount;
+        let rowNumber = rowsCount;
 
         let isRowChecked = false;
 
@@ -164,8 +164,8 @@ $(function () {
             tableRow.append(`<td class="checkbox-td center"><input type="checkbox"></td>`);
             tableRow.find(".checkbox-td input:checkbox").prop("checked", isRowChecked);
 
-            tableRow.append(`<td class="row-id-td center"></td>`);
-            tableRow.find(".row-id-td").text(rowId);
+            tableRow.append(`<td class="row-number-td center"></td>`);
+            tableRow.find(".row-number-td").text(rowNumber);
 
             tableRow.append(`<td class="last-name-td"></td>`);
             tableRow.find(".last-name-td").text(lastName);
@@ -201,13 +201,13 @@ $(function () {
                                 tableRow.remove();
                                 rowsCount--;
 
-                                function updateRowsIds() {
+                                function updateRowsNumbers() {
                                     $("#contacts-table tbody tr").each(function (i) {
-                                        $(this).find(".row-id-td").text(i + 1);
+                                        $(this).find(".row-number-td").text(i + 1);
                                     });
                                 }
 
-                                updateRowsIds();
+                                updateRowsNumbers();
                             },
                             "Отмена": function () {
                                 $(this).dialog("close");
@@ -219,7 +219,7 @@ $(function () {
 
             tableRow.find(".edit-button").click(function () {
                 isRowChecked = tableRow.find(".checkbox-td input:checkbox").is(":checked");
-                rowId = tableRow.find(".row-id-td").text();
+                rowNumber = tableRow.find(".row-number-td").text();
                 lastName = tableRow.find(".last-name-td").text();
                 name = tableRow.find(".name-td").text();
                 phone = tableRow.find(".phone-td").text();
@@ -228,7 +228,7 @@ $(function () {
                 tableRow.append(`<td class="checkbox-td center"><input type="checkbox"></td>`);
                 tableRow.find(".checkbox-td input:checkbox").prop("checked", isRowChecked);
 
-                tableRow.append(`<td class="center">${rowId}</td>`);
+                tableRow.append(`<td class="center">${rowNumber}</td>`);
 
                 tableRow.append(`<td><input class="last-name-input"></td>`);
                 tableRow.find(".last-name-input").val(lastName);

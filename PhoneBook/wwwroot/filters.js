@@ -6,7 +6,7 @@ $(function () {
     const cancelSearchButton = $("#cancel-search-button");
 
     searchButton.click(function () {
-        cancelSearchButton.trigger("click");
+        $("#contacts-table tbody tr").show();
 
         const searchString = searchField.val().trim().toLowerCase();
 
