@@ -82,35 +82,53 @@ $(function () {
             errorField.attr("placeholder", text);
         }
 
-        let lastName = lastNameField.val().trim();
+       /* let lastName = lastNameField.val().trim();
+        let name = nameField.val().trim();
+        let phone = phoneField.val().trim();*/
+
+        lastNameField.val(lastNameField.val().trim());
+        let lastName = lastNameField.val();
+
+        nameField.val(nameField.val().trim());
+        let name = nameField.val();
+
+        phoneField.val(phoneField.val().trim());
+        let phone = phoneField.val();
+
+        let isError = false;
 
         if (isEmpty(lastName)) {
             showError(lastNameField, "Не указана фамилия");
-            return;
+
+            isError = true;
+        } else {
+            lastNameField.removeClass("invalid");
+            lastNameField.attr("placeholder", "Введите фамилию");
         }
-
-        lastNameField.removeClass("invalid");
-        lastNameField.attr("placeholder", "Введите фамилию");
-
-        let name = nameField.val().trim();
 
         if (isEmpty(name)) {
             showError(nameField, "Не указано имя");
-            return;
+
+            isError = true;
+        } else {
+            nameField.removeClass("invalid");
+            nameField.attr("placeholder", "Введите имя");
         }
-
-        nameField.removeClass("invalid");
-        nameField.attr("placeholder", "Введите имя");
-
-        let phone = phoneField.val().trim();
 
         if (isEmpty(phone)) {
             showError(phoneField, "Не указан номер телефона");
-            return;
+
+            isError = true;
+        } else {
+            phoneField.removeClass("invalid");
+            phoneField.attr("placeholder", "Введите номер телефона");
         }
 
-        phoneField.removeClass("invalid");
-        phoneField.attr("placeholder", "Введите номер телефона");
+        if (isError) {
+            isError = false;
+
+            return;
+        }
 
         function isInContacts(number) {
             let isInContacts = false;
@@ -222,14 +240,58 @@ $(function () {
                 tableRow.find(".save-button").click(function () {
                     isRowChecked = tableRow.find(".checkbox-td input:checkbox").is(":checked");
 
-                    lastName = tableRow.find(".last-name-input").val().trim();
-                    name = tableRow.find(".name-input").val().trim();
-                    phone = tableRow.find(".phone-input").val().trim();
+                    let isCellError = false;
 
-                    if (isInContacts(phone)) {
+                    const lastNameCell = tableRow.find(".last-name-input");
+                    const newLastName = lastNameCell.val().trim();
+                    lastNameCell.val(newLastName);
+
+                    const nameCell = tableRow.find(".name-input");;
+                    const newName = nameCell.val().trim();
+                    nameCell.val(newName);
+
+                    const phoneCell = tableRow.find(".phone-input");;
+                    const newPhone = phoneCell.val().trim();
+                    phoneCell.val(newPhone);
+
+                    if (isEmpty(newLastName)) {
+                        showError(lastNameCell, "Не указана фамилия");
+
+                        isCellError = true;
+                    } else {
+                        lastNameCell.removeClass("invalid");
+                    }
+
+                    if (isEmpty(newName)) {
+                        showError(nameCell, "Не указано имя");
+
+                        isCellError = true;
+                    } else {
+                        nameCell.removeClass("invalid");
+                    }
+
+                    if (isEmpty(newPhone)) {
+                        showError(phoneCell, "Не указан номер телефона");
+
+                        isCellError = true;
+                    } else {
+                        phoneCell.removeClass("invalid");
+                    }
+
+                    if (isCellError) {
+                        isCellError = false;
+
+                        return;
+                    }
+
+                    if (isInContacts(newPhone)) {
                         showNotUniqPhoneNumberDialog();
                         return;
                     }
+
+                    lastName = newLastName;
+                    name = newName;
+                    phone = newPhone;
 
                     tableRow.html("");
                     setViewMode();
