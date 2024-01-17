@@ -73,7 +73,7 @@
 	font-size: 12px;
 	font-weight: normal;
 	display: none;
-	  color: #f00;
+	color: #f00;
 }
 
 .todo-form .invalid + .error-message {
