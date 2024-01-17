@@ -1,35 +1,37 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <title>Список дел (jQuery)</title>
-    <link href="normalize.css" rel="stylesheet" />
-    <link href="Libs/jquery-ui-1.13.2/jquery-ui.css" rel="stylesheet" />
-    <link href="styles.css" rel="stylesheet" />
+    <link href="normalize.css" rel="stylesheet"/>
+    <link href="Libs/jquery-ui-1.13.2/jquery-ui.css" rel="stylesheet"/>
+    <link href="styles.css" rel="stylesheet"/>
     <script src="Libs/jquery-3.7.1.js" defer></script>
     <script src="Libs/jquery-ui-1.13.2/jquery-ui.js" defer></script>
     <script src="script.js" defer></script>
 </head>
 <body>
-    <form class="todo-form" id="todo-form">
-        <h1>Список дел</h1>
+<form class="todo-form" id="todo-form">
+    <h1>Список дел</h1>
 
-        <div>
-            <input type="text" class="add-task-field" id="add-task-field" />
+    <div>
+        <input type="text" class="add-task-field" id="add-task-field"/>
 
-            <div class="error-message">Не введен текст</div>
-        </div>
+        <div class="error-message">Не введен текст</div>
+    </div>
 
-        <div>
-            <button type="button" class="add-task-button" id="add-task-button">Добавить</button>
-        </div>
+    <div>
+        <button type="button" class="add-task-button" id="add-task-button">Добавить</button>
+    </div>
 
-        <ul class="todo-list" id="todo-list"></ul>
+    <ul class="todo-list" id="todo-list"></ul>
 
-        <div id="confirm-delete-dialog" title="Подтвердите удаление" style="display: none;">
-            <p><span class="ui-icon ui-icon-alert" style="float:left; margin:2px 12px 20px 0;"></span>
-            Задача будет удалена из списка. Удалить?</p>
-        </div>
-    </form>
+    <div id="confirm-delete-dialog" title="Подтвердите удаление" style="display: none;">
+        <p>
+            <span class="ui-icon ui-icon-alert"></span>
+            Задача будет удалена из списка. Удалить?
+        </p>
+    </div>
+</form>
 </body>
 </html>

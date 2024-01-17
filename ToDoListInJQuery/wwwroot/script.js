@@ -30,9 +30,9 @@ $(function () {
 
         function setViewMode() {
             listItem.html(`
-                    <div class="list-item-string"></div>
-                    <button type="button" class="list-item-edit-button">Редактировать</button>
-                    <button type="button" class="list-item-remove-button">Удалить</button>
+                <div class="list-item-string"></div>
+                <button type="button" class="list-item-edit-button">Редактировать</button>
+                <button type="button" class="list-item-remove-button">Удалить</button>
             `);
 
             const listItemString = listItem.find(".list-item-string");
@@ -67,7 +67,7 @@ $(function () {
                     </div>
                     <button type="button" class="list-item-cancel-button">Отменить</button>
                     <button type="button" class="list-item-save-button">Сохранить</button>
-                    `);
+                `);
 
                 const editTaskField = listItem.find(".edit-task-field");
                 editTaskField.val(listItemText);
