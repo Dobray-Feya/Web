@@ -31,6 +31,10 @@
             age: 20
         },
         {
+            name: "Татьяна Валерьевна",
+            age: 71
+        },
+        {
             name: "Светлана",
             age: 30
         },
@@ -50,7 +54,7 @@
             name: "Клара",
             age: 26
         }
-    ]
+    ];
 
     function getAverageAge(people) {
         const agesSum = _.chain(people)
@@ -82,11 +86,10 @@
 
         _.chain(people)
             .map("name")
-            .uniq()
             .forEach(name => {
-                namesFrequency[name] += 1;
+                namesFrequency[name] = namesFrequency[name] + 1 || 1;
             })
-            .value()
+            .value();
 
         return namesFrequency;
     }
