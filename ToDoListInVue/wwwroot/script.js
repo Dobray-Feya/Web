@@ -57,6 +57,7 @@
 
             remove() {
                 this.$emit("remove-item", this.item);
+                console.log("remove: " + this.item.text); // delete
             },
 
             save() {

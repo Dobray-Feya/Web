@@ -10,6 +10,7 @@
     <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="styles.css" rel="stylesheet" />
 
+    <!-- Компонент - список дел -->
     <script type="text/x-template" id="todo-list-template">
         <form @submit.prevent="addNewItem" class="row was-validated">
             <div class="col mb-3">
@@ -35,6 +36,7 @@
         </form>
     </script>
 
+    <!-- Компонент - элемент списка -->
     <script type="text/x-template" id="todo-item-template">
         <li>
             <div v-if="!isEditing">
@@ -53,9 +55,9 @@
                         <button type="button"
                                 class="btn btn-danger"
                                 data-bs-toggle="modal" data-bs-target="#removeItemModal" @click="console.log(item.text)">
+                            <!-- delete -->
                             Удалить
                         </button>
-                        <!-- Диалог - предупреждение об удалении элемента -->
                         <div class="modal fade" id="removeItemModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
@@ -64,7 +66,7 @@
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        Дело будет удалено из списка.
+                                        Дело {{ item.text }} будет удалено из списка.
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button"
