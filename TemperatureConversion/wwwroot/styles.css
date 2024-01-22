@@ -10,54 +10,54 @@
 	width: 100%;
 }
 
-.temperature-panel .temperature-block,
-.temperature-panel .button {
-	font-family: Verdana, Arial, sans-serif;
-	font-size: 14px;
-	font-weight: bold;
-	color: #333;
-}
+	.temperature-panel .temperature-block,
+	.temperature-panel .button {
+		font-family: Verdana, Arial, sans-serif;
+		font-size: 14px;
+		font-weight: bold;
+		color: #333;
+	}
 
-.temperature-panel .temperature-block {
-	width: 200px;
-	height: 100px;
-	padding: 16px;
-	display: inline-block;
-	vertical-align: top;
-	line-height: 28px;
-}
+	.temperature-panel .temperature-block {
+		width: 200px;
+		height: 100px;
+		padding: 16px;
+		display: inline-block;
+		vertical-align: top;
+		line-height: 28px;
+	}
 
-.temperature-panel input[type="text"] {
-	font-weight: normal;
-	width: 145px;
-	border: 1px solid #808080;
-	padding: 5px;
-	text-align: right;
-}
+	.temperature-panel .button {
+		width: 145px;
+		padding: 5px;
+		background-color: #75c3f7;
+		border: 1px solid #808080;
+	}
 
-.temperature-panel .button {
-	width: 145px;
-	padding: 5px;
-	background-color: #75c3f7;
-	border: 1px solid #808080;
-}
+		.temperature-panel .button:hover {
+			background-color: #4db4f8;
+			cursor: pointer;
+		}
 
-.temperature-panel .button:hover {
-	background-color: #4db4f8;
-	cursor: pointer;
-}
+	.temperature-panel input[type="text"] {
+		font-weight: normal;
+		width: 145px;
+		border: 1px solid #808080;
+		padding: 5px;
+		text-align: right;
+	}
 
-.temperature-panel input[type="text"].invalid {
-	border: 1px solid #f00;
-}
+		.temperature-panel input[type="text"].invalid {
+			border: 1px solid #f00;
+		}
 
-.temperature-panel .error-message {
-	font-size: 12px;
-	font-weight: normal;
-	display: none;
-	color: #f00;
-}
+	.temperature-panel .error-message {
+		font-size: 12px;
+		font-weight: normal;
+		display: none;
+		color: #f00;
+	}
 
-.temperature-panel .invalid + .error-message {
-	display: block;
-}
+	.temperature-panel .invalid + .error-message {
+		display: block;
+	}
