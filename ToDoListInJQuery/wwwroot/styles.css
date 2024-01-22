@@ -11,76 +11,68 @@
 	color: #333;
 }
 
-.todo-form div,
-.todo-form button {
-	display: inline-block;
-	vertical-align: top;
-}
+	.todo-form div,
+	.todo-form button {
+		display: inline-block;
+		vertical-align: top;
+	}
 
-.todo-form li button {
-	text-align: right;
-}
+	.todo-form h1 {
+		font-weight: 300;
+	}
 
-.todo-form .list-item-string,
-.todo-form .edit-task-field {
-	text-align: left;
-}
+	.todo-form .add-task-button {
+		margin-left: 5px;
+		padding: 5px;
+		background-color: #75c3f7;
+		border: 1px solid #808080;
+		cursor: pointer;
+	}
 
-.todo-form h1 {
-	font-weight: 300;
-}
+		.todo-form .add-task-button:hover {
+			background-color: #4db4f8;
+		}
 
-.todo-form .add-task-button {
-	margin-left: 5px;
-	padding: 5px;
-	background-color: #75c3f7;
-	border: 1px solid #808080;
-	cursor: pointer;
-}
+	.todo-form .todo-list {
+		width: 100%;
+		list-style-type: none;
+		padding: 0;
+	}
 
-.todo-form .add-task-button:hover {
-	background-color: #4db4f8;
-}
+		.todo-form .todo-list li {
+			padding: 0 0 12px;
+		}
 
-.todo-form .todo-list {
-	width: 100%;
-	list-style-type: none;
-	padding: 0;
-}
+	.todo-form .add-task-field,
+	.todo-form .list-item-string,
+	.todo-form .edit-task-field {
+		width: 300px;
+		padding: 5px;
+		text-align: left;
+	}
 
-.todo-form .todo-list li {
-	padding: 0 0 12px;
-}
+	.todo-form .todo-list button {
+		margin-left: 5px;
+		padding: 5px;
+		cursor: pointer;
+	}
 
-.todo-form .add-task-field,
-.todo-form .list-item-string,
-.todo-form .edit-task-field {
-	width: 300px;
-	padding: 5px;
-}
+	.todo-form .invalid {
+		border-color: #f00;
+	}
 
-.todo-form .todo-list button {
-	margin-left: 5px;
-	padding: 5px;
-	cursor: pointer;
-}
+	.todo-form .error-message {
+		font-size: 12px;
+		font-weight: normal;
+		display: none;
+		color: #f00;
+	}
 
-.todo-form .invalid {
-	border-color: #f00;
-}
+	.todo-form .invalid + .error-message {
+		display: block;
+	}
 
-.todo-form .error-message {
-	font-size: 12px;
-	font-weight: normal;
-	display: none;
-	color: #f00;
-}
-
-.todo-form .invalid + .error-message {
-	display: block;
-}
-
-.ui-icon ui-icon-alert {
-	float: left;
-	margin: 2px 12px 20px 0;
-}
+	.todo-form .ui-icon .ui-icon-alert {
+		float: left;
+		margin: 2px 12px 20px 0;
+	}
