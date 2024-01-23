@@ -3,11 +3,11 @@
 }
 
 :root {
-	--primary-color: #2173c2;    /* темно-синий */
+	--primary-color: #2173c2; /* темно-синий */
 	--additional-color: #efecd7; /* бледно-желтый */
-	--secondary-color: #4db4f8;  /* светло-синий */
-	--control-font-color: #fff;  /* белый */
-	--error-color: #f00;         /* красный */
+	--secondary-color: #4db4f8; /* светло-синий */
+	--control-font-color: #fff; /* белый */
+	--error-color: #f00; /* красный */
 }
 
 .phone-book {
@@ -15,121 +15,125 @@
 	font-size: 14px;
 	font-weight: 400;
 	color: #333;
-	max-width: 850px;
+	max-width: 950px;
 	margin: 20px 24px;
 }
 
-.add-contact-form {
-	width: 300px;
-	padding: 24px;
-	margin: 24px 0;
-	background-color: var(--additional-color);
-}
+	.phone-book input[type="text"] {
+		padding: 5px;
+	}
 
-.add-contact-form h1 {
-	font-weight: 300;
-	font-size: 24px;
-	margin: 0;
-}
+	.phone-book button {
+		padding: 7px;
+		background-color: var(--primary-color);
+		border: 1px solid var(--secondary-color);
+		color: var(--control-font-color);
+		font-weight: bold;
+	}
 
-.add-contact-form .record {
-	margin: 10px 0;
-	line-height: 26px;
-}
+		.phone-book button:hover {
+			background-color: var(--secondary-color);
+			cursor: pointer;
+		}
 
-.phone-book input[type="text"] {
-	padding: 5px;
-}
+	.phone-book .add-contact-form {
+		width: 300px;
+		padding: 24px;
+		margin: 24px 0;
+		background-color: var(--additional-color);
+	}
 
-.add-contact-form input[type="text"] {
-	width: 100%;
-}
+		.phone-book .add-contact-form h1 {
+			font-weight: 300;
+			font-size: 24px;
+			margin: 0;
+		}
 
-.phone-book button {
-	padding: 7px;
-	background-color: var(--primary-color);
-	border: 1px solid var(--secondary-color);
-	color: var(--control-font-color);
-	font-weight: bold;
-}
+		.phone-book .add-contact-form .record {
+			margin: 10px 0;
+			line-height: 26px;
+		}
 
-.add-contact-form button {
-	display: block;
-	margin: 24px 0 1px auto;
-}
+		.phone-book .add-contact-form input[type="text"] {
+			width: 100%;
+		}
 
-.phone-book button:hover {
-	background-color: var(--secondary-color);
-	cursor: pointer;
-}
+		.phone-book .add-contact-form button {
+			display: block;
+			margin: 24px 0 1px auto;
+		}
 
-.add-contact-form .record-edit-button,
-.add-contact-form .record-remove-button {
-	margin-left: 5px;
-}
+	.phone-book .contacts-table {
+		margin: 20px 0;
+		width: 100%;
+		border-collapse: collapse;
+	}
 
-.phone-book .invalid {
-	border-color: var(--error-color);
-}
+		.phone-book .contacts-table thead {
+			margin: 20px 24px;
+			width: 100%;
+			background-color: var(--primary-color);
+			color: var(--control-font-color);
+			font-weight: bold;
+		}
 
-.phone-book .invalid::placeholder {
-	color: var(--error-color);
-}
+		.phone-book .contacts-table th,
+		.phone-book .contacts-table td {
+			padding: 7px 10px;
+			border: 1px solid var(--secondary-color);
+			vertical-align: top;
+		}
 
-.phone-book .contacts-table {
-	margin: 20px 0;
-	width: 100%;
-	border-collapse: collapse;
-}
+			.phone-book .contacts-table td.center {
+				text-align: center;
+				width: 85px;
+				padding: 7px;
+			}
 
-.phone-book .contacts-table thead {
-	margin: 20px 24px;
-	width: 100%;
-	background-color: var(--primary-color);
-	color: var(--control-font-color);
-	font-weight: bold;
-}
+		.phone-book .contacts-table .td-button {
+			margin: 0 5px;
+		}
 
-.phone-book .contacts-table th,
-.phone-book .contacts-table td {
-	padding: 7px 10px;
-}
+			.phone-book .contacts-table .td-button:hover {
+				cursor: pointer;
+			}
 
-.phone-book .contacts-table th {
-	border: 1px solid var(--secondary-color);
-}
+	.phone-book .tools {
+		display: inline-block;
+		word-spacing: 3px;
+	}
 
-.phone-book .contacts-table td {
-	
-	border: 1px solid var(--secondary-color);
-}
+		.phone-book .tools input[type="text"] {
+			width: 400px;
+		}
 
-.phone-book .contacts-table td.center {
-	text-align: center;
-	width: 65px;
-}
+	.phone-book .delete-selected-contacts-button {
+		display: block;
+		float: left;
+		margin-right: 90px;
+	}
 
-.phone-book .tools {
-	display: inline-block;
-	word-spacing: 3px;
-}
+	.phone-book .ui-icon .ui-icon-alert {
+		float: left;
+		margin: 12px 12px 20px 0;
+	}
 
-.phone-book .delete-selected-contacts-button {
-	display: block;
-	float:left;
-	margin-right: 90px;
-}
+	.phone-book .ui-icon .ui-icon-circle-check {
+		float: left;
+		margin: 0 7px 50px 0;
+	}
 
-.phone-book .tools input[type="text"] {
-	width: 400px;
-}
+	.phone-book .invalid {
+		border-color: #f00;
+	}
 
-ui-icon ui-icon-alert {
-	float: left;
-	margin: 12px 12px 20px 0;
-}
+	.phone-book .error-message {
+		font-size: 12px;
+		font-weight: normal;
+		display: none;
+		color: #f00;
+	}
 
-ui-icon ui-icon-circle-check {
-	float: left;
-	margin: 0 7px 50px 0;
-}
+	.phone-book .invalid + .error-message {
+		display: block;
+	}

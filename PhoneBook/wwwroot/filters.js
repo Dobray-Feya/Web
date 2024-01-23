@@ -6,7 +6,9 @@ $(function () {
     const cancelSearchButton = $("#cancel-search-button");
 
     searchButton.click(function () {
-        $("#contacts-table tbody tr").show();
+        const allRows = $("#contacts-table tbody tr");
+
+        allRows.show();
 
         const searchString = searchField.val().trim().toLowerCase();
 
@@ -14,12 +16,12 @@ $(function () {
             return;
         }
 
-        $("#contacts-table tbody tr").each(function () {
+        allRows.each(function () {
             const currentRow = $(this);
 
-            if (currentRow.find(".last-name-td").text().toLowerCase().indexOf(searchString) === -1 &&
-                currentRow.find(".name-td").text().toLowerCase().indexOf(searchString) === -1 &&
-                currentRow.find(".phone-td").text().toLowerCase().indexOf(searchString) === -1) {
+            if (currentRow.find(".last-name-td").text().toLowerCase().indexOf(searchString) === -1
+                && currentRow.find(".name-td").text().toLowerCase().indexOf(searchString) === -1
+                && currentRow.find(".phone-td").text().toLowerCase().indexOf(searchString) === -1) {
                 currentRow.hide();
             }
         });

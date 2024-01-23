@@ -9,8 +9,7 @@
   "license": "ISC",
   "dependencies": {
     "jquery": "^3.7.1",
-    "jquery-ui": "^1.13.2",
-    "jqueryui": "^1.11.1"
+    "jquery-ui": "^1.13.2"
   },
   "description": ""
 }

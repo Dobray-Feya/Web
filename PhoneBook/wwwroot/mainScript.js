@@ -68,56 +68,34 @@ $(function () {
     addContactForm.submit(function (e) {
         e.preventDefault();
 
-        function isEmpty(text) {
-            return text.length === 0;
+        function normalizeFieldValue(field) {
+            field.val($.trim(field.val()));
         }
 
-        function showError(errorField, text) {
-            errorField.addClass("invalid");
-            errorField.prop("placeholder", text);
+        function isFieldValueInvalid(field) {
+            if (field.val().length === 0) {
+                field.addClass("invalid");
+                return true;
+            } else {
+                field.removeClass("invalid");
+                return false;
+            }
         }
 
-        lastNameField.val(lastNameField.val().trim());
+        normalizeFieldValue(lastNameField);
         let lastName = lastNameField.val();
 
-        nameField.val(nameField.val().trim());
+        normalizeFieldValue(nameField);
         let name = nameField.val();
 
-        phoneField.val(phoneField.val().trim());
+        normalizeFieldValue(phoneField);
         let phone = phoneField.val();
 
-        let isError = false;
-
-        if (isEmpty(lastName)) {
-            showError(lastNameField, "Не указана фамилия");
-
-            isError = true;
-        } else {
-            lastNameField.removeClass("invalid");
-            lastNameField.prop("placeholder", "Введите фамилию");
-        }
-
-        if (isEmpty(name)) {
-            showError(nameField, "Не указано имя");
-
-            isError = true;
-        } else {
-            nameField.removeClass("invalid");
-            nameField.prop("placeholder", "Введите имя");
-        }
-
-        if (isEmpty(phone)) {
-            showError(phoneField, "Не указан номер телефона");
-
-            isError = true;
-        } else {
-            phoneField.removeClass("invalid");
-            phoneField.prop("placeholder", "Введите номер телефона");
-        }
+        let isError = isFieldValueInvalid(lastNameField);
+        isError = isFieldValueInvalid(nameField) || isError;
+        isError = isFieldValueInvalid(phoneField) || isError;
 
         if (isError) {
-            isError = false;
-
             return;
         }
 
@@ -135,16 +113,16 @@ $(function () {
         }
 
         function showNotUniquePhoneNumberDialog() {
-            $(function () {
+            $(function() {
                 $("#not-unique-phone-number-dialog-message").dialog({
                     modal: true,
                     buttons: {
-                        OK: function () {
+                        OK: function() {
                             $(this).dialog("close");
                         }
                     }
                 });
-            })
+            });
         }
 
         if (isInContacts(phone)) {
@@ -176,7 +154,9 @@ $(function () {
             tableRow.append(`<td class="phone-td"></td>`);
             tableRow.find(".phone-td").text(phone);
 
-            tableRow.append(`<td class="center"><img class="edit-button" src="Images/edit.svg"> <img class="delete-button" src="Images/delete.svg"></td>`);
+            tableRow.append(`<td class="center">
+                            <img class="edit-button td-button" src="Images/edit.svg" title="Редактировать">
+                            <img class="delete-button td-button" src="Images/delete.svg" title="Удалить"></td>`);
 
             checkAllCheckbox.change(function () {
                 const isChecked = checkAllCheckbox.is(":checked");
@@ -188,7 +168,6 @@ $(function () {
             });
 
             tableRow.find(".delete-button").click(function () {
-                $(function () {
                     $("#confirm-delete-dialog").dialog({
                         resizable: false,
                         height: "auto",
@@ -214,7 +193,6 @@ $(function () {
                             }
                         }
                     });
-                });
             });
 
             tableRow.find(".edit-button").click(function () {
@@ -230,16 +208,30 @@ $(function () {
 
                 tableRow.append(`<td class="center">${rowNumber}</td>`);
 
-                tableRow.append(`<td><input class="last-name-input"></td>`);
+                tableRow.append(
+                    `<td>
+                    <input type="text" class="last-name-input">
+                    <div class="error-message">Поле не заполнено</div>
+                    </td>`);
                 tableRow.find(".last-name-input").val(lastName);
 
-                tableRow.append(`<td><input class="name-input"></td>`);
+                tableRow.append(
+                    `<td>
+                    <input type="text" class="name-input">
+                    <div class="error-message">Поле не заполнено</div>
+                    </td>`);
                 tableRow.find(".name-input").val(name);
 
-                tableRow.append(`<td><input class="phone-input"></td>`);
+                tableRow.append(
+                    `<td>
+                    <input type="text" class="phone-input">
+                    <div class="error-message">Поле не заполнено</div>
+                    </td>`);
                 tableRow.find(".phone-input").val(phone);
 
-                tableRow.append(`<td class="center"><img class="save-button" src="Images/save.svg"> <img class="cancel-button" src="Images/cancel.svg"></td>`);
+                tableRow.append(`<td class="center">
+                                 <img class="save-button td-button" src="Images/save.svg" title="Сохранить">
+                                 <img class="cancel-button td-button" src="Images/cancel.svg" title="Отменить"></td>`);
 
                 tableRow.find(".checkbox-td input:checkbox").change(function () {
                     checkAllCheckbox.prop("checked", false);
@@ -248,47 +240,23 @@ $(function () {
                 tableRow.find(".save-button").click(function () {
                     isRowChecked = tableRow.find(".checkbox-td input:checkbox").is(":checked");
 
-                    let isCellError = false;
-
                     const lastNameCell = tableRow.find(".last-name-input");
-                    const newLastName = lastNameCell.val().trim();
-                    lastNameCell.val(newLastName);
+                    normalizeFieldValue(lastNameCell);
+                    const newLastName = lastNameCell.val();
 
-                    const nameCell = tableRow.find(".name-input");;
-                    const newName = nameCell.val().trim();
-                    nameCell.val(newName);
+                    const nameCell = tableRow.find(".name-input");
+                    normalizeFieldValue(nameCell);
+                    const newName = nameCell.val();
 
-                    const phoneCell = tableRow.find(".phone-input");;
-                    const newPhone = phoneCell.val().trim();
-                    phoneCell.val(newPhone);
+                    const phoneCell = tableRow.find(".phone-input");
+                    normalizeFieldValue(phoneCell);
+                    const newPhone = phoneCell.val();
 
-                    if (isEmpty(newLastName)) {
-                        showError(lastNameCell, "Не указана фамилия");
-
-                        isCellError = true;
-                    } else {
-                        lastNameCell.removeClass("invalid");
-                    }
-
-                    if (isEmpty(newName)) {
-                        showError(nameCell, "Не указано имя");
-
-                        isCellError = true;
-                    } else {
-                        nameCell.removeClass("invalid");
-                    }
-
-                    if (isEmpty(newPhone)) {
-                        showError(phoneCell, "Не указан номер телефона");
-
-                        isCellError = true;
-                    } else {
-                        phoneCell.removeClass("invalid");
-                    }
+                    let isCellError = isFieldValueInvalid(lastNameCell);
+                    isCellError = isFieldValueInvalid(nameCell) || isCellError;
+                    isCellError = isFieldValueInvalid(phoneCell) || isCellError;
 
                     if (isCellError) {
-                        isCellError = false;
-
                         return;
                     }
 
