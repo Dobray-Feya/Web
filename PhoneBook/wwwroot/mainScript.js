@@ -69,7 +69,7 @@ $(function () {
         e.preventDefault();
 
         function normalizeFieldValue(field) {
-            field.val($.trim(field.val()));
+            field.val(field.val().trim());
         }
 
         function isFieldValueInvalid(field) {

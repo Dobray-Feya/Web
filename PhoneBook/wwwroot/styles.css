@@ -29,11 +29,11 @@
 		border: 1px solid var(--secondary-color);
 		color: var(--control-font-color);
 		font-weight: bold;
+		cursor: pointer;
 	}
 
 		.phone-book button:hover {
 			background-color: var(--secondary-color);
-			cursor: pointer;
 		}
 
 	.phone-book .add-contact-form {
@@ -92,11 +92,8 @@
 
 		.phone-book .contacts-table .td-button {
 			margin: 0 5px;
+			cursor: pointer;
 		}
-
-			.phone-book .contacts-table .td-button:hover {
-				cursor: pointer;
-			}
 
 	.phone-book .tools {
 		display: inline-block;
@@ -111,16 +108,6 @@
 		display: block;
 		float: left;
 		margin-right: 90px;
-	}
-
-	.phone-book .ui-icon .ui-icon-alert {
-		float: left;
-		margin: 12px 12px 20px 0;
-	}
-
-	.phone-book .ui-icon .ui-icon-circle-check {
-		float: left;
-		margin: 0 7px 50px 0;
 	}
 
 	.phone-book .invalid {
