@@ -32,11 +32,11 @@
 		padding: 5px;
 		background-color: #75c3f7;
 		border: 1px solid #808080;
+		cursor: pointer;
 	}
 
 		.temperature-panel .button:hover {
 			background-color: #4db4f8;
-			cursor: pointer;
 		}
 
 	.temperature-panel input[type="text"] {

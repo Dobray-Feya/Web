@@ -17,7 +17,7 @@ $(function () {
     });
 
     addTaskButton.click(function () {
-        let listItemText = $.trim(addTaskField.val());
+        let listItemText = addTaskField.val().trim();
 
         addTaskField.removeClass("invalid");
 
@@ -87,7 +87,7 @@ $(function () {
                 saveButton.click(function () {
                     const editTaskField = listItem.find(".edit-task-field");
 
-                    const editedText = $.trim(editTaskField.val());
+                    const editedText = editTaskField.val().trim();
 
                     editTaskField.removeClass("invalid");
 

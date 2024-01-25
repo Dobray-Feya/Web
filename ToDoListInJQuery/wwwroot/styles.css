@@ -71,8 +71,3 @@
 	.todo-form .invalid + .error-message {
 		display: block;
 	}
-
-	.todo-form .ui-icon .ui-icon-alert {
-		float: left;
-		margin: 2px 12px 20px 0;
-	}
