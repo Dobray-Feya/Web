@@ -1,0 +1,8 @@
+[v-cloak] {
+	display: none;
+}
+
+i.bi.button:hover {
+	color: #6f42c1;
+	cursor: pointer;
+}
