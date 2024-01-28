@@ -36,7 +36,6 @@
 					<thead>
 						<tr>
 							<th>№</th>
-							<th>!!!</th>
 							<th>Имя</th>
 							<th>Телефон</th>
 							<th></th>
@@ -45,7 +44,6 @@
 					<tbody v-cloak v-for="(contact, index) in contacts" :key="contact.id">
 						<tr v-if="!contact.isEditing">
 							<td>{{ index + 1 }}</td>
-							<td>{{ contact.id }}</td>
 							<td>{{ contact.name }}</td>
 							<td>{{ contact.phone }}</td>
 							<td>
@@ -74,7 +72,6 @@
 						</tr>
 						<tr v-else>
 							<td>{{ index + 1 }}</td>
-							<td>{{ contact.id }}</td>
 							<td><input v-model="contact.newName"></td>
 							<td><input v-model="contact.newPhone"></td>
 							<td>
