@@ -29,7 +29,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WorkWithBootstrap", "WorkWi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoListInVue", "ToDoListInVue\ToDoListInVue.csproj", "{3E77CC6C-61D3-4CAC-B535-557A4402396B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhoneBookVueServer", "PhoneBookVueServer\PhoneBookVueServer.csproj", "{F70004E3-958F-4324-91DD-93AD3A58F92B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhoneBookVueServer", "PhoneBookVueServer\PhoneBookVueServer.csproj", "{F70004E3-958F-4324-91DD-93AD3A58F92B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RequireJsTest", "RequireJsTest\RequireJsTest.csproj", "{DDE361CB-2A52-48BF-BB23-D2993B9854C9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GruntTest", "GruntTest\GruntTest.csproj", "{79758A6D-7B00-4917-BAE8-E6BC4199FCF7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhoneBookWebPack", "PhoneBookWebPack\PhoneBookWebPack.csproj", "{13676E0B-3363-4FCE-B0C8-7BA9232DFD1D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -93,6 +99,18 @@ Global
 		{F70004E3-958F-4324-91DD-93AD3A58F92B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F70004E3-958F-4324-91DD-93AD3A58F92B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F70004E3-958F-4324-91DD-93AD3A58F92B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDE361CB-2A52-48BF-BB23-D2993B9854C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDE361CB-2A52-48BF-BB23-D2993B9854C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDE361CB-2A52-48BF-BB23-D2993B9854C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDE361CB-2A52-48BF-BB23-D2993B9854C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79758A6D-7B00-4917-BAE8-E6BC4199FCF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79758A6D-7B00-4917-BAE8-E6BC4199FCF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79758A6D-7B00-4917-BAE8-E6BC4199FCF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79758A6D-7B00-4917-BAE8-E6BC4199FCF7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13676E0B-3363-4FCE-B0C8-7BA9232DFD1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13676E0B-3363-4FCE-B0C8-7BA9232DFD1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13676E0B-3363-4FCE-B0C8-7BA9232DFD1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13676E0B-3363-4FCE-B0C8-7BA9232DFD1D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

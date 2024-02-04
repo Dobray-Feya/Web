@@ -2,7 +2,9 @@
 	display: none;
 }
 
+$button-hover-color: #6f42c1;
+
 i.bi.button:hover {
-	color: #6f42c1;
+	color: $button-hover-color;
 	cursor: pointer;
 }
