@@ -64,8 +64,8 @@ Vue.createApp({
         createContact() {
             const contact = {
                 id: this.id,  //в модель передаются только id, name, phone
-                name: this.name.trim(),
-                phone: this.phone.trim(),
+                name: this.name,
+                phone: this.phone,
                 isEditing: false, //isEditing, newName, newPhone используются только во VM
                 newName: "",
                 newPhone: ""
@@ -96,10 +96,6 @@ Vue.createApp({
             }).catch(() => alert("Не удалось удалить контакт"));
         },
 
-        confirmDeletion(contact) {
-
-        },
-
         editContact(contact) {
             contact.newName = contact.name;
             contact.newPhone = contact.phone;
@@ -113,8 +109,8 @@ Vue.createApp({
         },
 
         saveContact(contact) {
-            const newName = contact.newName.trim();
-            const newPhone = contact.newPhone.trim();
+            const newName = contact.newName;
+            const newPhone = contact.newPhone;
 
             const updatedContact = {
                 id: contact.id,

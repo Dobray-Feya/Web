@@ -10,10 +10,10 @@
 
 				<div class="row">
 					<div class="col-4">
-						<input v-model="name" type="text" name="name" class="form-control" placeholder="Имя">
+						<input v-model.trim="name" type="text" name="name" class="form-control" placeholder="Имя">
 					</div>
 					<div class="col-4">
-						<input v-model="phone" type="text" name="phone" class="form-control ms-2" placeholder="Телефон">
+						<input v-model.trim="phone" type="text" name="phone" class="form-control ms-2" placeholder="Телефон">
 					</div>
 					<button type="submit" class="btn btn-primary col-auto ms-2">Добавить</button>
 					<button @click="clear" type="button" class="btn btn-secondary col-auto ms-2">Очистить</button>
@@ -25,7 +25,7 @@
 
 				<div class="row">
 					<div class="col-4">
-						<input v-model="term" type="text" name="term" class="form-control" placeholder="Поиск">
+						<input v-model.trim="term" type="text" name="term" class="form-control" placeholder="Поиск">
 					</div>
 					<button type="submit" class="btn btn-primary col-auto ms-2">Поиск</button>
 				</div>
@@ -72,8 +72,8 @@
 						</tr>
 						<tr v-else>
 							<td>{{ index + 1 }}</td>
-							<td><input v-model="contact.newName"></td>
-							<td><input v-model="contact.newPhone"></td>
+							<td><input v-model.trim="contact.newName"></td>
+							<td><input v-model.trim="contact.newPhone"></td>
 							<td>
 								<i class="bi bi-check-circle button me-3" @click="saveContact(contact)" title="Сохранить"></i>
 								<i class="bi bi-dash-circle button" @click="cancelEditing(contact)" title="Отменить"></i>
