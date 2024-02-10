@@ -18,28 +18,28 @@
 
     <!-- Компонент - список дел -->
     <script type="text/x-template" id="todo-list-template">
-        <form class="row" :class="{ 'was-validated': isInvalidInput }">
+        <form @submit.prevent="addNewItem" class="row">
             <div class="col mb-3">
                 <textarea v-model.trim="newItemText"
-                       class="form-control"
-                       required>
+                          class="form-control"
+                          :class="{ 'is-invalid': isInvalidInput }"
+                          required>
                 </textarea>
                 <div class="invalid-feedback">
                     Введите текст
                 </div>
             </div>
             <div class="col-auto ps-2 pe-0 me-2">
-                <button type="submit" class="btn btn-primary" @click="addNewItem">Добавить</button>
+                <button type="submit" class="btn btn-primary">Добавить</button>
             </div>
-
-            <ul class="list-unstyled">
-                <todo-list-item v-for="item in items"
-                                :key="item.id"
-                                :item="item"
-                                @remove-item="removeItem">
-                </todo-list-item>
-            </ul>
         </form>
+        <ul class="list-unstyled">
+            <todo-list-item v-for="item in items"
+                            :key="item.id"
+                            :item="item"
+                            @remove-item="removeItem">
+            </todo-list-item>
+        </ul>
     </script>
 
     <!-- Компонент - элемент списка -->
@@ -70,7 +70,9 @@
                 <div class="row mb-2">
                     <div class="col">
                         <textarea class="form-control align-baseline"
-                                  v-model.trim="item.text" required></textarea>
+                                  v-model.trim="item.text"
+                                  :class="{ 'is-invalid': isInvalidInput }"
+                                  required></textarea>
                         <div class="invalid-feedback">
                             Введите текст
                         </div>

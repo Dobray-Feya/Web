@@ -1,4 +1,10 @@
-﻿Vue.createApp({})
+﻿// Проверка текстовых полей. Пока здесть проверка на пустую строку и тестовая проверка на ":)"
+// По идее здесь можно добавить другие проверки. Например, на отсутствие дубликата.
+function isValid(input) {
+    return input.length > 0 && input !== ":)";
+};
+
+Vue.createApp({})
     .component("TodoList", {
         data() {
             return {
@@ -13,7 +19,7 @@
 
         methods: {
             addNewItem() {
-                if (this.newItemText.length === 0) {
+                if (!isValid(this.newItemText)) {
                     this.isInvalidInput = true;
                     return;
                 }
@@ -46,7 +52,8 @@
         data() {
             return {
                 isEditing: false,
-                initialText: this.item.text
+                initialText: this.item.text,
+                isInvalidInput: false
             };
         },
 
@@ -63,9 +70,13 @@
             },
 
             save() {
-                if (this.item.text.length !== 0) {
-                    this.isEditing = false;
+                if (!isValid(this.item.text)) {
+                    this.isInvalidInput = true;
+                    return;
                 }
+
+                this.isEditing = false;
+                this.isInvalidInput = false;
             },
 
             cancelEditing() {
