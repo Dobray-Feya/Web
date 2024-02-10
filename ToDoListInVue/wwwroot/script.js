@@ -4,27 +4,30 @@
             return {
                 items: [],
                 newItemId: 1,
-                newItemText: ""
-            }
+                newItemText: "",
+                isInvalidInput: false
+            };
         },
 
         template: "#todo-list-template",
 
         methods: {
             addNewItem() {
-                this.newItemText = this.newItemText.trim();
-
-                if (this.newItemText.length !== 0) {
-                    const newItem = {
-                        id: this.newItemId,
-                        text: this.newItemText
-                    };
-
-                    this.items.push(newItem);
-
-                    this.newItemId++;
-                    this.newItemText = "";
+                if (this.newItemText.length === 0) {
+                    this.isInvalidInput = true;
+                    return;
                 }
+
+                const newItem = {
+                    id: this.newItemId,
+                    text: this.newItemText
+                };
+
+                this.items.push(newItem);
+
+                this.newItemId++;
+                this.newItemText = "";
+                this.isInvalidInput = false;
             },
 
             removeItem(item) {
@@ -44,7 +47,7 @@
             return {
                 isEditing: false,
                 initialText: this.item.text
-            }
+            };
         },
 
         template: "#todo-item-template",
@@ -57,12 +60,9 @@
 
             remove() {
                 this.$emit("remove-item", this.item);
-                console.log("remove: " + this.item.text); // delete
             },
 
             save() {
-                this.item.text = this.item.text.trim();
-
                 if (this.item.text.length !== 0) {
                     this.isEditing = false;
                 }
@@ -73,5 +73,4 @@
                 this.isEditing = false;
             }
         }
-    })
-.mount("#app")
+    }).mount("#app");

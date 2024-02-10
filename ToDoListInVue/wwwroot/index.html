@@ -9,21 +9,27 @@
     <script src="script.js" defer></script>
     <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="styles.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="app" class="container">
+        <h1 class="display-3">Список дел</h1>
+        <todo-list></todo-list>
+    </div>
 
     <!-- Компонент - список дел -->
     <script type="text/x-template" id="todo-list-template">
-        <form @submit.prevent="addNewItem" class="row was-validated">
+        <form class="row" :class="{ 'was-validated': isInvalidInput }">
             <div class="col mb-3">
-                <input type="text"
-                       v-model="newItemText"
+                <textarea v-model.trim="newItemText"
                        class="form-control"
-                       required />
+                       required>
+                </textarea>
                 <div class="invalid-feedback">
                     Введите текст
                 </div>
             </div>
-            <div class="col-auto ps-2 pe-0">
-                <button class="btn btn-primary">Добавить</button>
+            <div class="col-auto ps-2 pe-0 me-2">
+                <button type="submit" class="btn btn-primary" @click="addNewItem">Добавить</button>
             </div>
 
             <ul class="list-unstyled">
@@ -51,7 +57,7 @@
                             Редактировать
                         </button>
                     </div>
-                    <div class="col-auto ps-2 pe-0">
+                    <div class="col-auto ps-2 pe-0 me-2">
                         <button type="button"
                                 class="btn btn-danger"
                                 @click="remove">
@@ -64,12 +70,11 @@
                 <div class="row mb-2">
                     <div class="col">
                         <textarea class="form-control align-baseline"
-                                  v-model="item.text" required></textarea>
+                                  v-model.trim="item.text" required></textarea>
                         <div class="invalid-feedback">
                             Введите текст
                         </div>
                     </div>
-
                     <div class="col-auto ps-2 pe-0">
                         <button type="button"
                                 class="btn btn-success"
@@ -77,7 +82,7 @@
                             Сохранить
                         </button>
                     </div>
-                    <div class="col-auto ps-2 pe-0">
+                    <div class="col-auto ps-2 pe-0 me-2">
                         <button type="button"
                                 class="btn btn-secondary"
                                 @click="cancelEditing">
@@ -88,11 +93,5 @@
             </div>
         </li>
     </script>
-</head>
-<body>
-    <div id="app" class="container">
-        <h1 class="display-3">Список дел</h1>
-        <todo-list></todo-list>
-    </div>
 </body>
 </html>
