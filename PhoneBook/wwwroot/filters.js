@@ -6,22 +6,20 @@ $(function () {
     const cancelSearchButton = $("#cancel-search-button");
 
     searchButton.click(function () {
-        const allRows = $("#contacts-table tbody tr");
-
-        allRows.show();
-
         const searchString = searchField.val().trim().toLowerCase();
 
         if (searchString.length === 0) {
             return;
         }
 
-        allRows.each(function () {
+        $("#contacts-table tbody tr").each(function () {
             const currentRow = $(this);
 
-            if (currentRow.find(".last-name-td").text().toLowerCase().indexOf(searchString) === -1
-                && currentRow.find(".name-td").text().toLowerCase().indexOf(searchString) === -1
-                && currentRow.find(".phone-td").text().toLowerCase().indexOf(searchString) === -1) {
+            if (currentRow.find(".last-name-td").text().toLowerCase().includes(searchString) ||
+                currentRow.find(".name-td").text().toLowerCase().includes(searchString) ||
+                currentRow.find(".phone-td").text().toLowerCase().includes(searchString)) {
+                currentRow.show();
+            } else {
                 currentRow.hide();
             }
         });
@@ -29,5 +27,7 @@ $(function () {
 
     cancelSearchButton.click(function () {
         $("#contacts-table tbody tr").show();
+
+        searchField.val("");
     });
 });

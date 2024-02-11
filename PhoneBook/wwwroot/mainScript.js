@@ -10,7 +10,11 @@ $(function () {
     const deleteSelectedContactsButton = $("#delete-selected-contacts-button");
 
     deleteSelectedContactsButton.click(function () {
-        const checkedRows = $("#contacts-table tbody tr").filter(function () {
+        const visibleRows = $("#contacts-table tbody tr").filter(function () {
+            return $(this).is(":visible");
+        });
+
+        const checkedRows = visibleRows.filter(function () {
             return $(this).find(".checkbox-td input").is(":checked");
         });
 
@@ -44,15 +48,13 @@ $(function () {
         }
 
         function showNoCheckedContactsDialog() {
-            $(function () {
-                $("#no-checked-contacts-dialog-message").dialog({
-                    modal: true,
-                    buttons: {
-                        OK: function () {
-                            $(this).dialog("close");
-                        }
+            $("#no-checked-contacts-dialog-message").dialog({
+                modal: true,
+                buttons: {
+                    OK: function () {
+                        $(this).dialog("close");
                     }
-                });
+                }
             });
         }
 
@@ -68,42 +70,43 @@ $(function () {
     addContactForm.submit(function (e) {
         e.preventDefault();
 
-        function normalizeFieldValue(field) {
+        function trimFieldValue(field) {
             field.val(field.val().trim());
         }
 
-        function isFieldValueInvalid(field) {
+        function validateFieldValue(field) {
             if (field.val().length === 0) {
                 field.addClass("invalid");
-                return true;
-            } else {
-                field.removeClass("invalid");
                 return false;
             }
+
+            field.removeClass("invalid");
+            return true;
         }
 
-        normalizeFieldValue(lastNameField);
+        trimFieldValue(lastNameField);
         let lastName = lastNameField.val();
 
-        normalizeFieldValue(nameField);
+        trimFieldValue(nameField);
         let name = nameField.val();
 
-        normalizeFieldValue(phoneField);
+        trimFieldValue(phoneField);
         let phone = phoneField.val();
 
-        let isError = isFieldValueInvalid(lastNameField);
-        isError = isFieldValueInvalid(nameField) || isError;
-        isError = isFieldValueInvalid(phoneField) || isError;
+        // нужно проверить каждое поле, чтобы подсветить в нем ошибку, если она есть
+        let isValidInput = validateFieldValue(lastNameField);
+        isValidInput = validateFieldValue(nameField) && isValidInput;
+        isValidInput = validateFieldValue(phoneField) && isValidInput;
 
-        if (isError) {
+        if (!isValidInput) {
             return;
         }
 
-        function isInContacts(number) {
+        function isInContacts(phoneNumber) {
             let isInContacts = false;
 
             $("#contacts-table tbody tr").each(function () {
-                if ($(this).find(".phone-td").text() === number) {
+                if ($(this).find(".phone-td").text() === phoneNumber) {
                     isInContacts = true;
                     return false;
                 }
@@ -113,15 +116,13 @@ $(function () {
         }
 
         function showNotUniquePhoneNumberDialog() {
-            $(function() {
-                $("#not-unique-phone-number-dialog-message").dialog({
-                    modal: true,
-                    buttons: {
-                        OK: function() {
-                            $(this).dialog("close");
-                        }
+            $("#not-unique-phone-number-dialog-message").dialog({
+                modal: true,
+                buttons: {
+                    OK: function () {
+                        $(this).dialog("close");
                     }
-                });
+                }
             });
         }
 
@@ -139,20 +140,15 @@ $(function () {
         contactsTable.append(tableRow);
 
         function setViewMode() {
-            tableRow.append(`<td class="checkbox-td center"><input type="checkbox"></td>`);
-            tableRow.find(".checkbox-td input:checkbox").prop("checked", isRowChecked);
+            tableRow.append($(`<td class="checkbox-td center"><input type="checkbox"></td>`).prop("checked", isRowChecked));
 
-            tableRow.append(`<td class="row-number-td center"></td>`);
-            tableRow.find(".row-number-td").text(rowNumber);
+            tableRow.append($(`<td class="row-number-td center"></td>`).text(rowNumber));
 
-            tableRow.append(`<td class="last-name-td"></td>`);
-            tableRow.find(".last-name-td").text(lastName);
+            tableRow.append($(`<td class="last-name-td"></td>`).text(lastName));
 
-            tableRow.append(`<td class="name-td"></td>`);
-            tableRow.find(".name-td").text(name);
+            tableRow.append($(`<td class="name-td"></td>`).text(name));
 
-            tableRow.append(`<td class="phone-td"></td>`);
-            tableRow.find(".phone-td").text(phone);
+            tableRow.append($(`<td class="phone-td"></td>`).text(phone));
 
             tableRow.append(`<td class="center">
                             <img class="edit-button td-button" src="Images/edit.svg" title="Редактировать">
@@ -168,31 +164,31 @@ $(function () {
             });
 
             tableRow.find(".delete-button").click(function () {
-                    $("#confirm-delete-dialog").dialog({
-                        resizable: false,
-                        height: "auto",
-                        width: 400,
-                        modal: true,
-                        buttons: {
-                            "Удалить": function () {
-                                $(this).dialog("close");
+                $("#confirm-delete-dialog").dialog({
+                    resizable: false,
+                    height: "auto",
+                    width: 400,
+                    modal: true,
+                    buttons: {
+                        "Удалить": function () {
+                            $(this).dialog("close");
 
-                                tableRow.remove();
-                                rowsCount--;
+                            tableRow.remove();
+                            rowsCount--;
 
-                                function updateRowsNumbers() {
-                                    $("#contacts-table tbody tr").each(function (i) {
-                                        $(this).find(".row-number-td").text(i + 1);
-                                    });
-                                }
-
-                                updateRowsNumbers();
-                            },
-                            "Отмена": function () {
-                                $(this).dialog("close");
+                            function updateRowsNumbers() {
+                                $("#contacts-table tbody tr").each(function (i) {
+                                    $(this).find(".row-number-td").text(i + 1);
+                                });
                             }
+
+                            updateRowsNumbers();
+                        },
+                        "Отмена": function () {
+                            $(this).dialog("close");
                         }
-                    });
+                    }
+                });
             });
 
             tableRow.find(".edit-button").click(function () {
@@ -203,31 +199,26 @@ $(function () {
                 phone = tableRow.find(".phone-td").text();
 
                 tableRow.html("");
-                tableRow.append(`<td class="checkbox-td center"><input type="checkbox"></td>`);
-                tableRow.find(".checkbox-td input:checkbox").prop("checked", isRowChecked);
+                tableRow.append($(`<td class="checkbox-td center"><input type="checkbox"></td>`).prop("checked", isRowChecked));
 
                 tableRow.append(`<td class="center">${rowNumber}</td>`);
 
-                tableRow.append(
-                    `<td>
-                    <input type="text" class="last-name-input">
-                    <div class="error-message">Поле не заполнено</div>
-                    </td>`);
-                tableRow.find(".last-name-input").val(lastName);
+                const warningBlock = `<div class="error-message">Поле не заполнено</div>`;
 
-                tableRow.append(
-                    `<td>
-                    <input type="text" class="name-input">
-                    <div class="error-message">Поле не заполнено</div>
-                    </td>`);
-                tableRow.find(".name-input").val(name);
+                const lastNameTd = $(`<td></td>`);
+                lastNameTd.append($(`<input type="text" class="last-name-input">`).val(lastName));
+                lastNameTd.append($(warningBlock));
+                tableRow.append(lastNameTd);
 
-                tableRow.append(
-                    `<td>
-                    <input type="text" class="phone-input">
-                    <div class="error-message">Поле не заполнено</div>
-                    </td>`);
-                tableRow.find(".phone-input").val(phone);
+                const nameTd = $(`<td></td>`);
+                nameTd.append($(`<input type="text" class="name-input">`).val(name));
+                nameTd.append($(warningBlock));
+                tableRow.append(nameTd);
+
+                const phoneTd = $(`<td></td>`);
+                phoneTd.append($(`<input type="text" class="phone-input">`).val(phone));
+                phoneTd.append($(warningBlock));
+                tableRow.append(phoneTd);
 
                 tableRow.append(`<td class="center">
                                  <img class="save-button td-button" src="Images/save.svg" title="Сохранить">
@@ -241,28 +232,28 @@ $(function () {
                     isRowChecked = tableRow.find(".checkbox-td input:checkbox").is(":checked");
 
                     const lastNameCell = tableRow.find(".last-name-input");
-                    normalizeFieldValue(lastNameCell);
+                    trimFieldValue(lastNameCell);
                     const newLastName = lastNameCell.val();
 
                     const nameCell = tableRow.find(".name-input");
-                    normalizeFieldValue(nameCell);
+                    trimFieldValue(nameCell);
                     const newName = nameCell.val();
 
                     const phoneCell = tableRow.find(".phone-input");
-                    normalizeFieldValue(phoneCell);
+                    trimFieldValue(phoneCell);
                     const newPhone = phoneCell.val();
 
-                    let isCellError = isFieldValueInvalid(lastNameCell);
-                    isCellError = isFieldValueInvalid(nameCell) || isCellError;
-                    isCellError = isFieldValueInvalid(phoneCell) || isCellError;
+                    // нужно проверить каждое поле, чтобы подсветить в нем ошибку, если она есть
+                    let isValidCellsInput = validateFieldValue(lastNameCell);
+                    isValidCellsInput = validateFieldValue(nameCell) && isValidCellsInput;
+                    isValidCellsInput = validateFieldValue(phoneCell) && isValidCellsInput;
 
-                    if (isCellError) {
+                    if (!isValidCellsInput) {
                         return;
                     }
 
                     if (isInContacts(newPhone)) {
                         showNotUniquePhoneNumberDialog();
-
                         return;
                     }
 
@@ -283,9 +274,9 @@ $(function () {
 
         setViewMode();
 
-        $("#last-name-field").val("");
-        $("#name-field").val("");
-        $("#phone-field").val("");
+        lastNameField.val("");
+        nameField.val("");
+        phoneField.val("");
         checkAllCheckbox.prop("checked", false);
     });
 });
