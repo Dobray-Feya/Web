@@ -1,7 +1,15 @@
 ﻿// Проверка текстовых полей. Пока здесть проверка на пустую строку и тестовая проверка на ":)"
 // По идее здесь можно добавить другие проверки. Например, на отсутствие дубликата.
-function isValid(input) {
-    return input.length > 0 && input !== ":)";
+function validateInput(input) {
+    if (input.length === 0) {
+        return "Не введено значение";
+    }
+
+    if (input === ":)") {
+        return "Недопустимое значение";
+    }
+
+    return "OK";
 };
 
 Vue.createApp({})
@@ -11,7 +19,8 @@ Vue.createApp({})
                 items: [],
                 newItemId: 1,
                 newItemText: "",
-                isInvalidInput: false
+                isInvalidInput: false,
+                validateInputMessage:""
             };
         },
 
@@ -19,7 +28,9 @@ Vue.createApp({})
 
         methods: {
             addNewItem() {
-                if (!isValid(this.newItemText)) {
+                this.validateInputMessage = validateInput(this.newItemText);
+
+                if (this.validateInputMessage !== "OK") {
                     this.isInvalidInput = true;
                     return;
                 }
@@ -34,6 +45,7 @@ Vue.createApp({})
                 this.newItemId++;
                 this.newItemText = "";
                 this.isInvalidInput = false;
+                this.validateInputMessage = "";
             },
 
             removeItem(item) {
@@ -53,8 +65,9 @@ Vue.createApp({})
             return {
                 isEditing: false,
                 initialText: this.item.text,
-                isInvalidInput: false
-            };
+                isInvalidInput: false,
+                validateInputMessage: ""
+        };
         },
 
         template: "#todo-item-template",
@@ -70,13 +83,16 @@ Vue.createApp({})
             },
 
             save() {
-                if (!isValid(this.item.text)) {
+                this.validateInputMessage = validateInput(this.item.text);
+
+                if (this.validateInputMessage !== "OK") {
                     this.isInvalidInput = true;
                     return;
                 }
 
                 this.isEditing = false;
                 this.isInvalidInput = false;
+                this.validateInputMessage = "";
             },
 
             cancelEditing() {
