@@ -3,16 +3,16 @@
 (function () {
     const people = [
         {
+            name: "Светлана",
+            age: 30
+        },
+        {
             name: "Валентина Петровна",
             age: 47
         },
         {
             name: "Татьяна Валерьевна",
             age: 65
-        },
-        {
-            name: "Светлана",
-            age: 30
         },
         {
             name: "Клара",
@@ -35,7 +35,7 @@
             age: 71
         },
         {
-            name: "Светлана",
+            name: "Кристина",
             age: 30
         },
         {
@@ -57,12 +57,11 @@
     ];
 
     function getAverageAge(people) {
-        const agesSum = _.chain(people)
+        return _.chain(people)
             .map("age")
             .reduce((sum, age) => sum + age, 0)
+            .divide(people.length)
             .value();
-
-        return agesSum / people.length;
     }
 
     function getPeopleFrom20To30(people) {
@@ -72,11 +71,12 @@
             .value();
     }
 
-    function getUniqPeopleFrom30To20(people) {
+    function getUniqueNamesOfPeopleFrom20To30(people) {
         return _.chain(people)
             .filter(p => p.age >= 20 && p.age <= 30)
-            .uniqWith(_.isEqual)
-            .sortBy("age")
+            .map("name")
+            .uniq()
+            .sort()
             .reverse()
             .value();
     }
@@ -101,12 +101,11 @@
     const peopleFrom20To30 = getPeopleFrom20To30(people);
     peopleFrom20To30.forEach(p => console.log(p.name + " - " + p.age));
 
-    console.log("Им от 30 до 20 лет (в порядке убывания, без повторов):");
-    const uniqPeopleFrom30To20 = getUniqPeopleFrom30To20(people);
-    uniqPeopleFrom30To20.forEach(p => console.log(p.name + " - " + p.age));
+    console.log("Имена людей в возрасте от 20 до 30 лет (в порядке убывания, без повторов):");
+    const uniqueNamesOfPeopleFrom20To30 = getUniqueNamesOfPeopleFrom20To30(people);
+    uniqueNamesOfPeopleFrom20To30.forEach(name => console.log(name));
 
     console.log("Сколько раз встречается каждое имя:");
     const namesFrequency = getNamesFrequency(people);
     _.forIn(namesFrequency, (frequency, name) => console.log(name + " - " + frequency));
-
 })();
