@@ -16,7 +16,7 @@
 	font-weight: 400;
 	color: #333;
 	max-width: 950px;
-	margin: 20px 24px;
+	margin: 20px auto;
 }
 
 	.phone-book input[type="text"] {
@@ -24,7 +24,7 @@
 	}
 
 	.phone-book button {
-		margin: 0 0 20px 0;
+		margin: 20px 0 20px;
 		padding: 7px;
 		background-color: var(--primary-color);
 		border: 1px solid var(--secondary-color);

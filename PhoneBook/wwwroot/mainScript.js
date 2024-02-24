@@ -93,10 +93,8 @@ $(function () {
         trimFieldValue(phoneField);
         let phone = phoneField.val();
 
-        // нужно проверить каждое поле, чтобы подсветить в нем ошибку, если она есть
-        let isValidInput = validateFieldValue(lastNameField);
-        isValidInput = validateFieldValue(nameField) && isValidInput;
-        isValidInput = validateFieldValue(phoneField) && isValidInput;
+        // при побитовом сложении (&) выполнится каждое из слагаемых
+        let isValidInput = validateFieldValue(lastNameField) & validateFieldValue(nameField) & validateFieldValue(phoneField);
 
         if (!isValidInput) {
             return;
@@ -151,8 +149,13 @@ $(function () {
             tableRow.append($(`<td class="phone-td"></td>`).text(phone));
 
             tableRow.append(`<td class="center">
-                            <img class="edit-button td-button" src="Images/edit.svg" title="Редактировать">
-                            <img class="delete-button td-button" src="Images/delete.svg" title="Удалить"></td>`);
+                                <img class="edit-button td-button"
+                                     src="Images/edit.svg"
+                                     title="Редактировать">
+                                <img class="delete-button td-button"
+                                     src="Images/delete.svg"
+                                     title="Удалить">
+                            </td>`);
 
             checkAllCheckbox.change(function () {
                 const isChecked = checkAllCheckbox.is(":checked");
@@ -221,8 +224,13 @@ $(function () {
                 tableRow.append(phoneTd);
 
                 tableRow.append(`<td class="center">
-                                 <img class="save-button td-button" src="Images/save.svg" title="Сохранить">
-                                 <img class="cancel-button td-button" src="Images/cancel.svg" title="Отменить"></td>`);
+                                     <img class="save-button td-button"
+                                          src="Images/save.svg"
+                                          title="Сохранить">
+                                     <img class="cancel-button td-button"
+                                          src="Images/cancel.svg"
+                                          title="Отменить">
+                                 </td>`);
 
                 tableRow.find(".checkbox-td input:checkbox").change(function () {
                     checkAllCheckbox.prop("checked", false);
@@ -243,10 +251,7 @@ $(function () {
                     trimFieldValue(phoneCell);
                     const newPhone = phoneCell.val();
 
-                    // нужно проверить каждое поле, чтобы подсветить в нем ошибку, если она есть
-                    let isValidCellsInput = validateFieldValue(lastNameCell);
-                    isValidCellsInput = validateFieldValue(nameCell) && isValidCellsInput;
-                    isValidCellsInput = validateFieldValue(phoneCell) && isValidCellsInput;
+                    let isValidCellsInput = validateFieldValue(lastNameCell) & validateFieldValue(nameCell) & validateFieldValue(phoneCell);
 
                     if (!isValidCellsInput) {
                         return;
