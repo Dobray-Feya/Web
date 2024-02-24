@@ -22,11 +22,10 @@
             <div class="col mb-3">
                 <textarea v-model.trim="newItemText"
                           class="form-control"
-                          :class="{ 'is-invalid': isInvalidInput }"
-                          required>
+                          :class="{ 'is-invalid': isInvalidInput }">
                 </textarea>
                 <div class="invalid-feedback">
-                    {{validateInputMessage}}
+                    {{ invalidInputMessage }}
                 </div>
             </div>
             <div class="col-auto ps-2 pe-0 me-2">
@@ -47,9 +46,9 @@
         <li>
             <div v-if="!isEditing">
                 <div class="row mb-2">
-                    <span class="col">
+                    <div class="col">
                         {{ item.text }}
-                    </span>
+                    </div>
                     <div class="col-auto ps-2 pe-0">
                         <button type="button"
                                 class="btn btn-primary"
@@ -71,10 +70,10 @@
                     <div class="col">
                         <textarea class="form-control align-baseline"
                                   v-model.trim="item.text"
-                                  :class="{ 'is-invalid': isInvalidInput }"
-                                  required></textarea>
+                                  :class="{ 'is-invalid': isInvalidInput }">
+                        </textarea>
                         <div class="invalid-feedback">
-                            {{validateInputMessage}}
+                            {{invalidInputMessage}}
                         </div>
                     </div>
                     <div class="col-auto ps-2 pe-0">

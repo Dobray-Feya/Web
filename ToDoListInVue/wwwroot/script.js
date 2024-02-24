@@ -1,16 +1,14 @@
-﻿// Проверка текстовых полей. Пока здесть проверка на пустую строку и тестовая проверка на ":)"
-// По идее здесь можно добавить другие проверки. Например, на отсутствие дубликата.
-function validateInput(input) {
+﻿function validateInput(input) {
     if (input.length === 0) {
         return "Не введено значение";
     }
 
-    if (input === ":)") {
-        return "Недопустимое значение";
-    }
+    return "";
+}
 
-    return "OK";
-};
+function normalize(input) {
+    return input.replace(/\n/g, ' ').replace(/\s+/g, ' ');
+}
 
 Vue.createApp({})
     .component("TodoList", {
@@ -20,7 +18,7 @@ Vue.createApp({})
                 newItemId: 1,
                 newItemText: "",
                 isInvalidInput: false,
-                validateInputMessage:""
+                invalidInputMessage: ""
             };
         },
 
@@ -28,16 +26,16 @@ Vue.createApp({})
 
         methods: {
             addNewItem() {
-                this.validateInputMessage = validateInput(this.newItemText);
+                this.invalidInputMessage = validateInput(this.newItemText);
 
-                if (this.validateInputMessage !== "OK") {
+                if (this.invalidInputMessage.length > 0) {
                     this.isInvalidInput = true;
                     return;
                 }
 
                 const newItem = {
                     id: this.newItemId,
-                    text: this.newItemText
+                    text: normalize(this.newItemText)
                 };
 
                 this.items.push(newItem);
@@ -45,7 +43,6 @@ Vue.createApp({})
                 this.newItemId++;
                 this.newItemText = "";
                 this.isInvalidInput = false;
-                this.validateInputMessage = "";
             },
 
             removeItem(item) {
@@ -66,8 +63,8 @@ Vue.createApp({})
                 isEditing: false,
                 initialText: this.item.text,
                 isInvalidInput: false,
-                validateInputMessage: ""
-        };
+                invalidInputMessage: ""
+            };
         },
 
         template: "#todo-item-template",
@@ -83,16 +80,16 @@ Vue.createApp({})
             },
 
             save() {
-                this.validateInputMessage = validateInput(this.item.text);
+                this.invalidInputMessage = validateInput(this.item.text);
 
-                if (this.validateInputMessage !== "OK") {
+                if (this.invalidInputMessage.length > 0) {
                     this.isInvalidInput = true;
                     return;
                 }
 
+                this.item.text = normalize(this.item.text)
                 this.isEditing = false;
                 this.isInvalidInput = false;
-                this.validateInputMessage = "";
             },
 
             cancelEditing() {
